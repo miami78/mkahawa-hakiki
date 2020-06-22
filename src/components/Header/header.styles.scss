@@ -10,6 +10,10 @@
     font-weight: bolder;
     align-items: center;
     
+    .geo-info {
+        display: flex;
+        margin-left: -340px;
+    }
     .logo-container {
         height: 100%;
         width: 70px;
