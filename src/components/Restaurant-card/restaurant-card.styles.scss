@@ -20,24 +20,32 @@
         padding: 10px 0;
 
         .section {
+            display: flex;
+            flex-direction: column;
             padding: 0 15px;
             cursor: pointer;
             min-height: 112px;
             padding: 10px 18px 10px 24px;
             flex: none;
             border-radius: 15px;
+            align-items: flex-start;
             
             .section-details {
                 color: #70757A;
                 display: inline-block;
                 font-size: 13px;
                 line-height: 16px;
+                text-align: left;
             }
             
             .section-header {
                 display: flex;
-                flex-direction: row;
-                justify-content: space-between;
+                flex-direction: column;
+                align-items: flex-start;
+
+                h3{
+                    margin: 0px 0px;
+                }
             }
         }
 
