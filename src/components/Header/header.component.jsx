@@ -7,7 +7,7 @@ const Header = () => {
         <div className="header">
             <div className="logo-container"><ReactLogo /></div>
             <div className="geo-info">Nairobi,Kenya</div>
-            MKAHAWA HAKIKI
+            <h1>MKAHAWA HAKIKI</h1>
             <button className="custom-button">Add Restaurant</button>
         </div>
     );
