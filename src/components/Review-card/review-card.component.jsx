@@ -6,6 +6,7 @@ import './review-card.styles.scss';
 const ReviewCard = () => {
   return (
     <div className="review-card">
+        <h3>Filter by rating :</h3>
         <Rate allowHalf defaultValue={2.5}/>
     </div>
   );
