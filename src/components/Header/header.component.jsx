@@ -1,10 +1,15 @@
 import React from 'react';
-import './header.styles.scss'
+import './header.styles.scss';
+import {ReactComponent as ReactLogo} from '../../assets/location-pin.svg';
 
 const Header = () => {
     return (
       <div className="header">
-        THIS IS THE HEADER
+        <div className="logo-container">
+            <ReactLogo />
+        </div>
+        MKAHAWA HAKIKI
+        <button className="custom-button">Add Restaurant</button>
       </div>
     );
   }
