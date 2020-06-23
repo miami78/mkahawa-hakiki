@@ -4,7 +4,7 @@ require('dotenv').config()
 
 const mapStyles = {
   width: '100%',
-  height: '100%',
+  height: '690px',
   position: 'fixed',
 };
 export class MapContainer extends React.Component {
