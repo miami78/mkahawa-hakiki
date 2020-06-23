@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mkahawa-hakiki/static/css/main.9679cf57.chunk.css",
-    "main.js": "/mkahawa-hakiki/static/js/main.c02373d0.chunk.js",
-    "main.js.map": "/mkahawa-hakiki/static/js/main.c02373d0.chunk.js.map",
+    "main.js": "/mkahawa-hakiki/static/js/main.e874d0b8.chunk.js",
+    "main.js.map": "/mkahawa-hakiki/static/js/main.e874d0b8.chunk.js.map",
     "runtime-main.js": "/mkahawa-hakiki/static/js/runtime-main.4b044557.js",
     "runtime-main.js.map": "/mkahawa-hakiki/static/js/runtime-main.4b044557.js.map",
     "static/css/2.3cb76441.chunk.css": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css",
     "static/js/2.3f046d18.chunk.js": "/mkahawa-hakiki/static/js/2.3f046d18.chunk.js",
     "static/js/2.3f046d18.chunk.js.map": "/mkahawa-hakiki/static/js/2.3f046d18.chunk.js.map",
     "index.html": "/mkahawa-hakiki/index.html",
-    "precache-manifest.3983a7be54c321025a6a572a6879ef7c.js": "/mkahawa-hakiki/precache-manifest.3983a7be54c321025a6a572a6879ef7c.js",
+    "precache-manifest.566900e0c3de21217c58f18299f0eea2.js": "/mkahawa-hakiki/precache-manifest.566900e0c3de21217c58f18299f0eea2.js",
     "service-worker.js": "/mkahawa-hakiki/service-worker.js",
     "static/css/2.3cb76441.chunk.css.map": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css.map",
     "static/css/main.9679cf57.chunk.css.map": "/mkahawa-hakiki/static/css/main.9679cf57.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.3cb76441.chunk.css",
     "static/js/2.3f046d18.chunk.js",
     "static/css/main.9679cf57.chunk.css",
-    "static/js/main.c02373d0.chunk.js"
+    "static/js/main.e874d0b8.chunk.js"
   ]
 }
