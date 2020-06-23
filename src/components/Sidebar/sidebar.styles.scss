@@ -1,0 +1,28 @@
+.restaurant-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    opacity: 1;
+    width: 27%;
+    height: 690px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    background: #fff;
+    box-sizing: border-box;
+    padding: 20px 0px;
+    position: relative;
+    z-index:100;
+    overflow: auto;
+    
+    &::-webkit-scrollbar {
+        width: 12px;               /* width of the entire scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+        background: #f0f0f0;        /* color of the tracking area */
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: #888;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid #f0f0f0;  /* creates padding around scroll thumb */
+    }
+}
