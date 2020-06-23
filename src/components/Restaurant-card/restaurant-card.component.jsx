@@ -11,13 +11,7 @@ class RestaurantCard extends React.Component {
             restaurants:[],
         };
     }
-    componentDidMount() {
-        fetch('/data/api.json')
-            .then(res => res.json())
-            .then(res => this.setState({ restaurants:res.data}))
-    }
     render(){
-        console.log(this.state.restaurants)
         return (
             <div className="restaurant-list">
                 <div className="section-divider-bottom-line"></div>

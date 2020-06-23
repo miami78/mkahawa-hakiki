@@ -8,16 +8,8 @@ class App extends React.Component {
   constructor () {
     super()
     this.state = {
-        showRestaurants: false,
     };
   }
-
-  toggleRestaurantsHandler = () => {
-    const isVisible = this.state.showRestaurants;
-    this.setState({
-        showRestaurants: !isVisible
-    });
-}
   render() {
     return (
       <div className="App">
