@@ -11,19 +11,31 @@ const mapStyles = {
 export class MapContainer extends React.Component {
   constructor() {
     super();
-    this.state = {
-      name: "React"
-    };
+    this.state = {};
+  }
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+      });
+    }
   }
   render() {
     return (
       <Map
         google={this.props.google}
-        style={mapStyles}
         zoom={14}
+        style={mapStyles}
+        initialCenter={{
+         lat: -1.2877824,
+         lng: 36.8672768
+        }}
       >
-      <Marker onClick={this.onMarkerClick}
-      name={'Current location'} />
+        <Marker //Adds a marker on the google map using latitude and longitude
+          
+        />
       </Map>
     );
   }
