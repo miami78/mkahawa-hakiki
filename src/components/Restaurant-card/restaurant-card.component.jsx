@@ -1,85 +1,37 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Rate } from 'antd';
+import Restaurants from '../../data/api.json';
 
 import './restaurant-card.styles.scss';
 
+
 class RestaurantCard extends React.Component {
-    constructor () {
-        super()
+    constructor (props) {
+        super(props)
         this.state = {
-            restaurants:[],
+            restaurants:{},
         };
     }
+    componentDidMount() {
+        Restaurants.map(restaurants => {
+            this.setState({restaurants: restaurants})
+            return console.log(restaurants)
+        })
+        
+    }
     render(){
+        console.log(this.state.restaurants.ratings["0"]["stars"])
         return (
             <div className="restaurant-list">
                 <div className="section-divider-bottom-line"></div>
                 <div className= "section">
                     <div className="section-header">
-                        <h3>Kilimanjaro Food Court</h3>
-                        <span><Rate disabled defaultValue={2.5}/></span>
-                    </div>
-                    <div className="section-details">
-                        <p>$Restaurant · Teachers Service Commission, Woodley/Kenyatta Golf Course Kilimanjaro
-                        Closing soon: 12:00 · 0727 628707</p>
+                        <h3>{this.state.restaurants.restaurantName}</h3>
+                        <span><Rate allowHalf defaultValue={this.state.restaurants.ratings}/></span>
                     </div>
                 </div>
                 <div className="section-divider-bottom-line"></div>
-                <div className= "section">
-                    <div className="section-header">
-                        <h3>Kilimanjaro Food Court</h3>
-                        <span><Rate disabled defaultValue={2.5}/></span>
-                    </div>
-                    <div className="section-details">
-                        <p>$Restaurant · Teachers Service Commission, Woodley/Kenyatta Golf Course Kilimanjaro
-                        Closing soon: 12:00 · 0727 628707</p>
-                    </div>
-                </div>
-                <div className="section-divider-bottom-line"></div>
-                <div className= "section">
-                    <div className="section-header">
-                        <h3>Kilimanjaro Food Court</h3>
-                        <span><Rate disabled defaultValue={2.5}/></span>
-                    </div>
-                    <div className="section-details">
-                        <p>$Restaurant · Teachers Service Commission, Woodley/Kenyatta Golf Course Kilimanjaro
-                        Closing soon: 12:00 · 0727 628707</p>
-                    </div>
-                </div>
-                <div className="section-divider-bottom-line"></div>
-                <div className= "section">
-                    <div className="section-header">
-                        <h3>Kilimanjaro Food Court</h3>
-                        <span><Rate disabled defaultValue={2.5}/></span>
-                    </div>
-                    <div className="section-details">
-                        <p>$Restaurant · Teachers Service Commission, Woodley/Kenyatta Golf Course Kilimanjaro
-                        Closing soon: 12:00 · 0727 628707</p>
-                    </div>
-                </div>
-                <div className="section-divider-bottom-line"></div>
-                <div className= "section">
-                    <div className="section-header">
-                        <h3>Kilimanjaro Food Court</h3>
-                        <span><Rate disabled defaultValue={2.5}/></span>
-                    </div>
-                    <div className="section-details">
-                        <p>$Restaurant · Teachers Service Commission, Woodley/Kenyatta Golf Course Kilimanjaro
-                        Closing soon: 12:00 · 0727 628707</p>
-                    </div>
-                </div>
-                <div className="section-divider-bottom-line"></div>
-                <div className= "section">
-                    <div className="section-header">
-                        <h3>Kilimanjaro Food Court</h3>
-                        <span><Rate disabled defaultValue={2.5}/></span>
-                    </div>
-                    <div className="section-details">
-                        <p>$Restaurant · Teachers Service Commission, Woodley/Kenyatta Golf Course Kilimanjaro
-                        Closing soon: 12:00 · 0727 628707</p>
-                    </div>
-                </div>
             </div>
         );
     }
