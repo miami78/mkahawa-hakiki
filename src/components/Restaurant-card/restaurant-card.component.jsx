@@ -21,7 +21,7 @@ class RestaurantCard extends React.Component {
         
     }
     render(){
-        console.log(this.state.restaurants.ratings["0"]["stars"])
+        console.log(this.state.restaurants.ratings)
         return (
             <div className="restaurant-list">
                 <div className="section-divider-bottom-line"></div>
