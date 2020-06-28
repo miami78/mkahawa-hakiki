@@ -9,16 +9,31 @@ const mapStyles = {
 };
 
 export class MapContainer extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      mapCenter: {
+        lat:-1.2845056,
+        lng:36.7951872
+      }
+    };
   }
 
   componentDidMount() {
     if (navigator.geolocation) {
-      navigator.geolocation.watchPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
+      navigator.geolocation.getCurrentPosition((position)=> {
+        const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+        }
+        console.log("Latitude is :", pos.lat);
+        console.log("Longitude is :", pos.lng);
+        this.setState({
+          mapCenter: {
+            lat:pos.lat,
+            lng:pos.lng
+          } 
+        })
       });
     }
   }
@@ -29,12 +44,16 @@ export class MapContainer extends React.Component {
         zoom={14}
         style={mapStyles}
         initialCenter={{
-         lat: -1.2877824,
-         lng: 36.8672768
+         lat: this.state.mapCenter.lat,
+         lng: this.state.mapCenter.lng
         }}
       >
         <Marker //Adds a marker on the google map using latitude and longitude
-          
+        draggable={true}
+          position={{
+            lat: this.state.mapCenter.lat,
+            lng: this.state.mapCenter.lng
+          }}
         />
       </Map>
     );
