@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "376783dbfac520a21c57186c87bc9451",
+    "revision": "e3bd5ef0c787a4e5eb88adc0e97da579",
     "url": "/mkahawa-hakiki/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css"
   },
   {
-    "revision": "f58265612f3c1a2847d7",
-    "url": "/mkahawa-hakiki/static/css/main.b980e8af.chunk.css"
+    "revision": "89bacdd64fab6ae9916a",
+    "url": "/mkahawa-hakiki/static/css/main.3a5dd2ef.chunk.css"
   },
   {
     "revision": "25786bdb6e3867438070",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mkahawa-hakiki/static/js/2.1be24630.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f58265612f3c1a2847d7",
-    "url": "/mkahawa-hakiki/static/js/main.3aac9424.chunk.js"
+    "revision": "89bacdd64fab6ae9916a",
+    "url": "/mkahawa-hakiki/static/js/main.2e1f5be9.chunk.js"
   },
   {
     "revision": "bc4828047138204bae6b",
