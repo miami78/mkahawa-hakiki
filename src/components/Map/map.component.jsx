@@ -13,8 +13,8 @@ export class MapContainer extends React.Component {
     super(props);
     this.state = {
       mapCenter: {
-        lat:-1.2845056,
-        lng:36.7951872
+        lat:-1.328635,
+        lng:31.7951872
       }
     };
   }
@@ -43,7 +43,7 @@ export class MapContainer extends React.Component {
         google={this.props.google}
         zoom={14}
         style={mapStyles}
-        initialCenter={{
+        center={{
          lat: this.state.mapCenter.lat,
          lng: this.state.mapCenter.lng
         }}
