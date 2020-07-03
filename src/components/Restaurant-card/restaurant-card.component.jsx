@@ -10,27 +10,32 @@ class RestaurantCard extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            restaurants:{},
+            restaurants:[],
+            newRestaurants:[]
         };
     }
     componentDidMount() {
-        Restaurants.map(restaurants => {
-            this.setState({restaurants: restaurants})
-            return console.log(restaurants)
-        })
-        
+        this.setState({restaurants: Restaurants})
     }
+    //conditionaly render inside map,if each rest is equal or above the filter
     render(){
-        console.log(this.state.restaurants.ratings)
+        console.log(this.state.restaurants)
         return (
             <div className="restaurant-list">
                 <div className="section-divider-bottom-line"></div>
-                <div className= "section">
-                    <div className="section-header">
-                        <h3>{this.state.restaurants.restaurantName}</h3>
-                        <span><Rate allowHalf defaultValue={this.state.restaurants.ratings}/></span>
-                    </div>
-                </div>
+                {
+                    this.state.restaurants.map((rest)=> {
+                        return(
+                            <div className= "section">
+                            <div className="section-header">
+                                <h3>{rest.restaurantName}</h3>
+                                <span><Rate disabled defaultValue={rest.ratings[0].stars}/></span>
+                                <p>{rest.ratings[0].comment}</p>
+                            </div>
+                        </div>  
+                        )
+                    })
+                }
                 <div className="section-divider-bottom-line"></div>
             </div>
         );
