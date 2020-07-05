@@ -6,12 +6,12 @@
     opacity: 1;
     width: 420px;
     height: 690px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     background: #fff;
     box-sizing: border-box;
     padding: 20px 0px;
     position: relative;
-    z-index:100;
+    z-index:2;
     overflow: auto;
     
     &::-webkit-scrollbar {

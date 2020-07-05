@@ -1,12 +1,14 @@
 .form-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: 'Open Sans Condensed';
     width: 360px;
     padding: 8% 0 0;
     margin: auto;
     position: relative;
-    z-index: 1;
+    z-index: 3;
     background: #FFFFFF;
     border-radius: 25px;
     margin: 0 auto 100px;

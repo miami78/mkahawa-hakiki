@@ -9,11 +9,8 @@
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
     align-items: center;
-    
-    .geo-info {
-        display: flex;
-        margin-left: -340px;
-    }
+    z-index: 0;
+
     .logo-container {
         height: 100%;
         width: 70px;
