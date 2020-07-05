@@ -3,6 +3,7 @@ import 'antd/dist/antd.css';
 import { Rate } from 'antd';
 import Restaurants from '../../data/api.json';
 
+
 import './restaurant-card.styles.scss';
 
 
@@ -11,32 +12,39 @@ class RestaurantCard extends React.Component {
         super(props)
         this.state = {
             restaurants:[],
-            newRestaurants:[]
         };
     }
     componentDidMount() {
-        this.setState({restaurants: Restaurants})
+        this.setState({
+            restaurants: Restaurants
+        })
     }
-    //conditionaly render inside map,if each rest is equal or above the filter
+    //conditionaly render inside map,if each rest is equal or above the filter    
     render(){
         console.log(this.state.restaurants)
         return (
             <div className="restaurant-list">
-                <div className="section-divider-bottom-line"></div>
                 {
-                    this.state.restaurants.map((rest)=> {
+                    this.state.restaurants.map((restaurant, index)=> {
                         return(
-                            <div className= "section">
+                        <div key={index} className= "section">
                             <div className="section-header">
-                                <h3>{rest.restaurantName}</h3>
-                                <span><Rate disabled defaultValue={rest.ratings[0].stars}/></span>
-                                <p>{rest.ratings[0].comment}</p>
+                                <h3>{restaurant.restaurantName}</h3>
                             </div>
+                {
+                    restaurant.ratings.map((rating,i)=> {
+                        return(
+                            <div key={i} className="section-details">
+                            <span><Rate disabled defaultValue={rating.stars}/></span>
+                            <p>{rating.comment}</p>
+                            </div>
+                        )
+                    })
+                }
                         </div>  
                         )
                     })
                 }
-                <div className="section-divider-bottom-line"></div>
             </div>
         );
     }
