@@ -5,7 +5,8 @@ const API_KEY = process.env.REACT_APP_MAPS;
 const mapStyles = {
   width: '100%',
   height: '690px',
-  position: 'fixed',
+  position: 'relative',
+  zIndex: '1'
 };
 
 export class MapContainer extends React.Component {
