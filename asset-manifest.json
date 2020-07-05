@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/mkahawa-hakiki/static/css/main.3a5dd2ef.chunk.css",
-    "main.js": "/mkahawa-hakiki/static/js/main.2e1f5be9.chunk.js",
-    "main.js.map": "/mkahawa-hakiki/static/js/main.2e1f5be9.chunk.js.map",
+    "main.css": "/mkahawa-hakiki/static/css/main.5473131a.chunk.css",
+    "main.js": "/mkahawa-hakiki/static/js/main.6347e46b.chunk.js",
+    "main.js.map": "/mkahawa-hakiki/static/js/main.6347e46b.chunk.js.map",
     "runtime-main.js": "/mkahawa-hakiki/static/js/runtime-main.4b044557.js",
     "runtime-main.js.map": "/mkahawa-hakiki/static/js/runtime-main.4b044557.js.map",
     "static/css/2.3cb76441.chunk.css": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css",
-    "static/js/2.1be24630.chunk.js": "/mkahawa-hakiki/static/js/2.1be24630.chunk.js",
-    "static/js/2.1be24630.chunk.js.map": "/mkahawa-hakiki/static/js/2.1be24630.chunk.js.map",
+    "static/js/2.ea10985e.chunk.js": "/mkahawa-hakiki/static/js/2.ea10985e.chunk.js",
+    "static/js/2.ea10985e.chunk.js.map": "/mkahawa-hakiki/static/js/2.ea10985e.chunk.js.map",
     "index.html": "/mkahawa-hakiki/index.html",
-    "precache-manifest.c60b78e07879599ce1e611f1235879ff.js": "/mkahawa-hakiki/precache-manifest.c60b78e07879599ce1e611f1235879ff.js",
+    "precache-manifest.dfa0ee14d3398aebe14488df016c2adb.js": "/mkahawa-hakiki/precache-manifest.dfa0ee14d3398aebe14488df016c2adb.js",
     "service-worker.js": "/mkahawa-hakiki/service-worker.js",
     "static/css/2.3cb76441.chunk.css.map": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css.map",
-    "static/css/main.3a5dd2ef.chunk.css.map": "/mkahawa-hakiki/static/css/main.3a5dd2ef.chunk.css.map",
-    "static/js/2.1be24630.chunk.js.LICENSE.txt": "/mkahawa-hakiki/static/js/2.1be24630.chunk.js.LICENSE.txt",
+    "static/css/main.5473131a.chunk.css.map": "/mkahawa-hakiki/static/css/main.5473131a.chunk.css.map",
+    "static/js/2.ea10985e.chunk.js.LICENSE.txt": "/mkahawa-hakiki/static/js/2.ea10985e.chunk.js.LICENSE.txt",
     "static/media/location-pin.18e28fbf.svg": "/mkahawa-hakiki/static/media/location-pin.18e28fbf.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.4b044557.js",
     "static/css/2.3cb76441.chunk.css",
-    "static/js/2.1be24630.chunk.js",
-    "static/css/main.3a5dd2ef.chunk.css",
-    "static/js/main.2e1f5be9.chunk.js"
+    "static/js/2.ea10985e.chunk.js",
+    "static/css/main.5473131a.chunk.css",
+    "static/js/main.6347e46b.chunk.js"
   ]
 }
