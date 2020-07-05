@@ -32,67 +32,67 @@
        ]
     },
     {
-      "restaurantName":"jdoqwhdq",
+      "restaurantName":"Kilimanjaro",
       "address":"4 Rue Lamarck, 75018 Paris",
       "lat":48.8865035,
       "long":2.3442197,
       "ratings":[
          {
             "stars":3,
-            "comment":"Tiny pizzeria next to Sacre Coeur!"
+            "comment":"Kilimanjaro 1 Tiny pizzeria next to Sacre Coeur!"
          },
          {
             "stars":1,
-            "comment":"Meh, it was fine."
+            "comment":"Kilimanjaro 2 Meh, it was fine."
          }
       ]
    },
    {
-      "restaurantName":"djoqhd",
+      "restaurantName":"Miamis",
       "address":"4 Rue Lamarck, 75018 Paris",
       "lat":48.8865035,
       "long":2.3442197,
       "ratings":[
          {
             "stars":5,
-            "comment":"Tiny pizzeria next to Sacre Coeur!"
+            "comment":"Miamis 1 Tiny pizzeria next to Sacre Coeur!"
          },
          {
             "stars":4,
-            "comment":"Meh, it was fine."
+            "comment":"Miamis 2 Meh, it was fine."
          }
       ]
    },
    {
-      "restaurantName":"djoqhd",
+      "restaurantName":"Jacks",
       "address":"4 Rue Lamarck, 75018 Paris",
       "lat":48.8865035,
       "long":2.3442197,
       "ratings":[
          {
-            "stars":5,
-            "comment":"Tiny pizzeria next to Sacre Coeur!"
+            "stars":2,
+            "comment":" Jacks 1 Tiny pizzeria next to Sacre Coeur!"
          },
          {
-            "stars":4,
-            "comment":"Meh, it was fine."
+            "stars":5,
+            "comment":" Jacks 2 Meh, it was fine."
          }
       ]
    }
    ,
    {
-      "restaurantName":"djoqhd",
+      "restaurantName":"Strawberry",
       "address":"4 Rue Lamarck, 75018 Paris",
       "lat":48.8865035,
       "long":2.3442197,
       "ratings":[
          {
-            "stars":5,
-            "comment":"Tiny pizzeria next to Sacre Coeur!"
+            "stars":1,
+            "comment":"Strawberry 1 Tiny pizzeria next to Sacre Coeur!"
          },
          {
-            "stars":4,
-            "comment":"Meh, it was fine."
+            "stars":2,
+            "comment":"Strawberry 2 Meh, it was fine."
          }
       ]
    }
