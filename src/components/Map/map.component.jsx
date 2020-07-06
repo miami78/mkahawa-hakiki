@@ -1,5 +1,6 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import Restaurants from '../../data/api.json';
 const API_KEY = process.env.REACT_APP_MAPS;
 
 const mapStyles = {
@@ -9,6 +10,7 @@ const mapStyles = {
   zIndex: '1'
 };
 
+//map through rest and render marker
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,8 @@ export class MapContainer extends React.Component {
       mapCenter: {
         lat:-1.328635,
         lng:31.7951872
-      }
+      },
+      restaurants: Restaurants,
     };
   }
 
@@ -39,6 +42,7 @@ export class MapContainer extends React.Component {
     }
   }
   render() {
+    const{ restaurants } = this.state;
     return (
       <Map
         google={this.props.google}
@@ -49,13 +53,14 @@ export class MapContainer extends React.Component {
          lng: this.state.mapCenter.lng
         }}
       >
-        <Marker //Adds a marker on the google map using latitude and longitude
-        draggable={true}
+        {restaurants.map((restaurant)=> (
+          <Marker
           position={{
-            lat: this.state.mapCenter.lat,
-            lng: this.state.mapCenter.lng
+            lat: restaurant.lat,
+            lng: restaurant.long
           }}
         />
+        ))}
       </Map>
     );
   }
