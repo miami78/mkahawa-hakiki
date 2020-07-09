@@ -5,9 +5,10 @@
     justify-content: center;
     font-family: 'Open Sans Condensed';
     width: 360px;
-    padding: 8% 0 0;
-    margin: auto;
-    position: relative;
+    //left & top
+    left: 40%;
+    top: 160px;
+    position: absolute;
     z-index: 3;
     background: #FFFFFF;
     border-radius: 25px;
