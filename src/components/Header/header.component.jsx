@@ -3,6 +3,7 @@ import './header.styles.scss';
 import RestaurantForm from '../Form/form.component';
 import {ReactComponent as ReactLogo} from '../../assets/location-pin.svg';
 
+//Pass a function ref as props to trigger a function to the parent component
 const Header= ()=> {
     const [showForm, setshowForm] = useState(false);
     return (
