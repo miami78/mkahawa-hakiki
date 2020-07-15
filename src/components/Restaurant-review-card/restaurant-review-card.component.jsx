@@ -3,7 +3,6 @@ import 'antd/dist/antd.css';
 import { Rate } from 'antd';
 import Restaurants from '../../data/api.json';
 
-
 import './restaurant-review-card.styles.scss';
 
 
@@ -11,7 +10,7 @@ class RestaurantReviewCard extends React.Component {
     constructor (props) {
         super(props)
         this.state = {
-            restaurants:[],
+            restaurants:[]
         };
     }
     componentDidMount() {
@@ -21,9 +20,17 @@ class RestaurantReviewCard extends React.Component {
     }  
     render(){
         const{ restaurants } = this.state;
+
+        const filteredRestaurants = []
+        for(let i =0; i < restaurants.length; i++){
+            console.log(restaurants[i])
+            if(restaurants[i].rating >= this.props.filteredRating){
+                filteredRestaurants.push(restaurants[i])
+            }
+        }
         return (
             <div className="restaurant-list">
-                {restaurants.map((restaurant, id)=> (
+                {filteredRestaurants.map((restaurant, id)=> (
                     <div key={id} className= "section">
                         <div className="section-header">
                             <h3>{restaurant.restaurantName}</h3>
@@ -42,3 +49,4 @@ class RestaurantReviewCard extends React.Component {
 }
 
 export default RestaurantReviewCard;
+
