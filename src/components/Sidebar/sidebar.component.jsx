@@ -6,15 +6,28 @@ import './sidebar.styles.scss';
 
 //pass in the name of a new function as props to the review card
 //React pass function as props
+//set state to hold rating
 class SideBar extends React.Component {
-    render() {
+    // Set up state in sidebar component, to hold the filtered rating.
+    constructor(props){
+        super(props);
+        this.state = {
+            filteredRating:[],
+        }
+    }
+// Make a function in sidebar that sets the state with a rating that is passed in.
+    handleFilterChange(rating) {
+        this.setState({filteredRating:rating})
+    }
+    render(){
         return (
             <div className="restaurant-card">
-                <FilterCard />
-                <RestaurantReviewCard />
+                <FilterCard handleFilterChange = {this.handleFilterChange}/>
+                <RestaurantReviewCard rating={this.state.filteredRating}/>
             </div>
         );
-    }
+    }  
 }
 
 export default SideBar;
+
