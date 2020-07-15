@@ -53,8 +53,9 @@ export class MapContainer extends React.Component {
          lng: this.state.mapCenter.lng
         }}
       >
-        {restaurants.map((restaurant)=> (
+        {restaurants.map((restaurant,index)=> (
           <Marker
+          key= {index}
           position={{
             lat: restaurant.lat,
             lng: restaurant.long
