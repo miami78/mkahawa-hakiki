@@ -4,6 +4,7 @@
        "address":"Muthangari Gardens, Nairobi",
        "lat":-1.2830004,
        "long":36.7699554,
+       "rating":5,
        "ratings":[
           {
              "stars":5,
@@ -20,6 +21,7 @@
        "address":"Jacaranda Ave, Nairobi",
        "lat":-1.2855332,
        "long":36.7691845,
+       "rating":4,
        "ratings":[
           {
              "stars":5,
@@ -36,6 +38,7 @@
       "address":"Mageta Rd, Nairobi",
       "lat":-1.2868786,
       "long":36.7692029,
+      "rating":4,
       "ratings":[
          {
             "stars":3,
@@ -52,6 +55,7 @@
       "address":"Korosho Rd, Nairobi",
       "lat":-1.2889698,
       "long":36.7700101,
+      "rating":3,
       "ratings":[
          {
             "stars":4,
@@ -68,6 +72,7 @@
       "address":"Gitanga Rd, Nairobi",
       "lat":-1.2899279,
       "long":36.77266,
+      "rating":2,
       "ratings":[
          {
             "stars":3,
@@ -85,6 +90,7 @@
       "address":"Oloitoktok Rd, Nairobi",
       "lat":-1.2902054,
       "long":36.7748425,
+      "rating":4.5,
       "ratings":[
          {
             "stars":4,
