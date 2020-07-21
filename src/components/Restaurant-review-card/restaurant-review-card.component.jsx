@@ -16,6 +16,7 @@ class RestaurantReviewCard extends React.Component {
     this.setState({
       restaurants: Restaurants
     });
+    
   }
   render() {
     const { restaurants } = this.state;
@@ -25,7 +26,7 @@ class RestaurantReviewCard extends React.Component {
     const filteredRestaurants = [];
     for (let i = 0; i < restaurants.length; i++) {
       //   console.log("OLA", restaurants[i].rating, this.props.filteredRating);
-      if (restaurants[i].rating === this.props.rating) {
+      if (restaurants[i].rating >= this.props.rating) {
         filteredRestaurants.push(restaurants[i]);
       }
     }

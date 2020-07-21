@@ -12,7 +12,7 @@ class SideBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filteredRating: []
+      filteredRating: 1
     };
   }
   // Make a function in sidebar that sets the state with a rating that is passed in.
@@ -30,4 +30,5 @@ class SideBar extends React.Component {
   }
 }
 
+//react conditional rendering for the dropdown card
 export default SideBar;
