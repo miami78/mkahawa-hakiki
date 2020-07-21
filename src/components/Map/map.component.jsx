@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import Restaurants from '../../data/api.json';
 const API_KEY = process.env.REACT_APP_MAPS;
@@ -15,11 +16,11 @@ export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mapCenter: {
+      currentLocation: {
         lat:-1.328635,
         lng:31.7951872
       },
-      restaurants: Restaurants,
+      restaurants: Restaurants
     };
   }
 
@@ -33,14 +34,48 @@ export class MapContainer extends React.Component {
         console.log("Latitude is :", pos.lat);
         console.log("Longitude is :", pos.lng);
         this.setState({
-          mapCenter: {
+          currentLocation: {
             lat:pos.lat,
             lng:pos.lng
-          } 
+          }
         })
+        console.log(this.state.currentLocation)
+        this.fetchPlaces()
+        this.nearbyRestaurants()
       });
     }
+    
   }
+  fetchPlaces=()=> { 
+
+		// Create request for Google Places based on current map bounds
+		let request = {
+      location:this.state.currentLocation,
+      radius: '500',
+			type: ['restaurant'],
+    };
+    const {google} = this.props;
+    const mapRef = this.refs.map;
+    const node = ReactDOM.findDOMNode(mapRef)
+    const maps = google.maps;
+    this.map = new maps.Map(node);
+
+		// Submit request
+    let service = new window.google.maps.places.PlacesService(this.map);
+    console.log(service)
+    service.nearbySearch(request, this.nearbyRestaurants);
+    console.log(request)
+  }
+  nearbyRestaurants=(results,status)=>{
+    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      console.log("status OK")
+      for (var i = 0; i < results.length; i++) {
+        console.log(results[i]);
+      }
+    }
+  }
+  
+  
   render() {
     const{ restaurants } = this.state;
     return (
@@ -49,8 +84,8 @@ export class MapContainer extends React.Component {
         zoom={14}
         style={mapStyles}
         center={{
-         lat: this.state.mapCenter.lat,
-         lng: this.state.mapCenter.lng
+         lat: this.state.currentLocation.lat,
+         lng: this.state.currentLocation.lng
         }}
       >
         {restaurants.map((restaurant,index)=> (
