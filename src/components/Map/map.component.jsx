@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import Restaurants from '../../data/api.json';
 const API_KEY = process.env.REACT_APP_MAPS;
@@ -16,65 +15,83 @@ export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentLocation: {
+      userLocation: {
         lat:-1.328635,
         lng:31.7951872
       },
-      restaurants: Restaurants
+      restaurants: [],
+      mapBounds: []
     };
   }
 
   componentDidMount() {
+    this.getUserPosition()
+    this.nearbyRestaurants()
+  }
+  componentDidUpdate(){
+    this.getUserPosition()
+    this.nearbyRestaurants()
+  }
+  //function to get userLocation
+  getUserPosition=()=>{
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position)=> {
         const pos = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
         }
-        console.log("Latitude is :", pos.lat);
-        console.log("Longitude is :", pos.lng);
+        // console.log("Latitude is :", pos.lat);
+        // console.log("Longitude is :", pos.lng);
         this.setState({
-          currentLocation: {
+          userLocation: {
             lat:pos.lat,
             lng:pos.lng
           }
         })
-        console.log(this.state.currentLocation)
-        this.fetchPlaces()
-        this.nearbyRestaurants()
+        //console.log(this.state.userLocation)
       });
+    }else{
+      window.alert("Geolocation not available.");
     }
-    
   }
-  fetchPlaces=()=> { 
-
-		// Create request for Google Places based on current map bounds
+  fetchPlaces=(mapProps, map)=> { 
+    const {google} = mapProps;
+    
+    // Create request for Google Places based on current map bounds
 		let request = {
-      location:this.state.currentLocation,
+      location:this.state.userLocation,
       radius: '500',
-			type: ['restaurant'],
+      type: ['restaurant'],
+      fields: ["name", "formatted_address", "place_id", "geometry","rating"]
     };
-    const {google} = this.props;
-    const mapRef = this.refs.map;
-    const node = ReactDOM.findDOMNode(mapRef)
-    const maps = google.maps;
-    this.map = new maps.Map(node);
 
 		// Submit request
-    let service = new window.google.maps.places.PlacesService(this.map);
-    console.log(service)
+    const service = new google.maps.places.PlacesService(map);
     service.nearbySearch(request, this.nearbyRestaurants);
     console.log(request)
   }
+
   nearbyRestaurants=(results,status)=>{
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       console.log("status OK")
       for (var i = 0; i < results.length; i++) {
         console.log(results[i]);
-      }
-    }
-  }
+      }   
+      // let place = results[0]  
+      // console.log(place) 
+      // //get details
+      // service.getDetails({placeId: place.place_id}, function(place, status){
+      //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      //     for(let review of place.reviews){
+      //       console.log(review)
+      //     }
+      //   } 
+      // });
+    } 
   
+  }
+
+
   
   render() {
     const{ restaurants } = this.state;
@@ -83,9 +100,10 @@ export class MapContainer extends React.Component {
         google={this.props.google}
         zoom={14}
         style={mapStyles}
+        onReady={this.fetchPlaces}
         center={{
-         lat: this.state.currentLocation.lat,
-         lng: this.state.currentLocation.lng
+         lat: this.state.userLocation.lat,
+         lng: this.state.userLocation.lng
         }}
       >
         {restaurants.map((restaurant,index)=> (
