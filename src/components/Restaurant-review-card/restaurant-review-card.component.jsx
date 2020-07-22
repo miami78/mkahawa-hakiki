@@ -9,7 +9,7 @@ class RestaurantReviewCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurants: [],
     };
   }
   componentDidMount() {
@@ -21,7 +21,7 @@ class RestaurantReviewCard extends React.Component {
   render() {
     const { restaurants } = this.state;
 
-    console.log("DATA", this.props.rating);
+    //console.log("DATA", this.props.rating);
 
     const filteredRestaurants = [];
     for (let i = 0; i < restaurants.length; i++) {
@@ -31,7 +31,7 @@ class RestaurantReviewCard extends React.Component {
       }
     }
 
-    console.log("FILTERED", filteredRestaurants);
+    //console.log("FILTERED", filteredRestaurants);
     return (
       <div className="restaurant-list">
         {filteredRestaurants.map((restaurant, id) => (

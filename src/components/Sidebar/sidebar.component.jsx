@@ -20,7 +20,7 @@ class SideBar extends React.Component {
     this.setState({ filteredRating: rating });
   }
   render() {
-    console.log("OLAAAA", this.state);
+    //console.log("OLAAAA", this.state);
     return (
       <div className="restaurant-card">
         <FilterCard handleFilterChange={this.handleFilterChange} />
