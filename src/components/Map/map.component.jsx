@@ -1,128 +1,76 @@
 import React from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
-import Restaurants from '../../data/api.json';
-const API_KEY = process.env.REACT_APP_MAPS;
 
+const API_KEY = process.env.REACT_APP_MAPS;
 const mapStyles = {
   width: '100%',
   height: '690px',
-  position: 'relative',
-  zIndex: '1'
+  position: 'absolute',
+  zIndex: '-1'
 };
 
 //map through rest and render marker
 export class MapContainer extends React.Component {
+  
   constructor(props) {
     super(props);
     this.state = {
-      userLocation: {
+      userPosition: {
         lat:-1.328635,
         lng:31.7951872
       },
-      restaurants: [],
-      mapBounds: []
     };
+    this.googleMapRef = React.createRef()
   }
 
   componentDidMount() {
-    this.getUserPosition()
-    this.nearbyRestaurants()
+    const googleMapScript = document.createElement('script')
+    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`
+    window.document.body.appendChild(googleMapScript)
+    googleMapScript.addEventListener("load", () => {
+      this.checkUserLocation()
+      this.googleMap = this.createGoogleMap();
+      this.marker = this.createMarker()
+    });
   }
-  componentDidUpdate(){
-    this.getUserPosition()
-    this.nearbyRestaurants()
-  }
-  //function to get userLocation
-  getUserPosition=()=>{
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position)=> {
-        const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-        }
-        // console.log("Latitude is :", pos.lat);
-        // console.log("Longitude is :", pos.lng);
-        this.setState({
-          userLocation: {
-            lat:pos.lat,
-            lng:pos.lng
-          }
-        })
-        //console.log(this.state.userLocation)
-      });
-    }else{
-      window.alert("Geolocation not available.");
+  // Checks for geolocation
+  checkUserLocation=()=>{
+    if(navigator.geolocation){
+      // Get position from user and assign it to state
+      navigator.geolocation.getCurrentPosition(position=>{
+        this.setState({userPosition:{
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }})
+        console.log(this.state.userPosition)
+      })
+      
     }
   }
-  fetchPlaces=(mapProps, map)=> { 
-    const {google} = mapProps;
-    
-    // Create request for Google Places based on current map bounds
-		let request = {
-      location:this.state.userLocation,
-      radius: '500',
-      type: ['restaurant'],
-      fields: ["name", "formatted_address", "place_id", "geometry","rating"]
-    };
-
-		// Submit request
-    const service = new google.maps.places.PlacesService(map);
-    service.nearbySearch(request, this.nearbyRestaurants);
-    console.log(request)
+  // Initialize google map
+  createGoogleMap=()=> {
+    // Create new instance of google map
+      new window.google.maps.Map(this.googleMapRef.current,{
+        center: this.state.userPosition,
+        zoom:15,
+        styles:mapStyles
+    })
   }
-
-  nearbyRestaurants=(results,status)=>{
-    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-      console.log("status OK")
-      for (var i = 0; i < results.length; i++) {
-        this.setState({restaurants:results})
-        console.log(this.state.restaurants[i]);
-        
-      }   
-      // let place = results[0]  
-      // console.log(place) 
-      // //get details
-      // service.getDetails({placeId: place.place_id}, function(place, status){
-      //   if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-      //     for(let review of place.reviews){
-      //       console.log(review)
-      //     }
-      //   } 
-      // });
-    } 
-  
-  }
-
-
-  
+  createMarker = () =>
+  new window.google.maps.Marker({
+    position: this.state.userPosition,
+    map: this.googleMap,
+  })
   render() {
-    const{ restaurants } = this.state;
     return (
-      <Map
-        google={this.props.google}
-        zoom={14}
-        style={mapStyles}
-        onReady={this.fetchPlaces}
-        center={{
-         lat: this.state.userLocation.lat,
-         lng: this.state.userLocation.lng
-        }}
-      >
-        {restaurants.map((restaurant,index)=> (
-          <Marker
-          key= {index}
-          position={{
-            lat: restaurant.geometry.location.lat,
-            lng: restaurant.geometry.location.lng
-          }}
-        />
-        ))}
-      </Map>
+      <div 
+        id="google-map"
+        ref={this.googleMapRef}
+        style= {mapStyles}
+      />
+      
     );
   }
 }
 
-export default GoogleApiWrapper({
-  apiKey: API_KEY
-})(MapContainer);
+export default MapContainer;
 
