@@ -75,7 +75,9 @@ export class MapContainer extends React.Component {
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       console.log("status OK")
       for (var i = 0; i < results.length; i++) {
-        console.log(results[i]);
+        this.setState({restaurants:results})
+        console.log(this.state.restaurants[i]);
+        
       }   
       // let place = results[0]  
       // console.log(place) 
@@ -110,8 +112,8 @@ export class MapContainer extends React.Component {
           <Marker
           key= {index}
           position={{
-            lat: restaurant.lat,
-            lng: restaurant.long
+            lat: restaurant.geometry.location.lat,
+            lng: restaurant.geometry.location.lng
           }}
         />
         ))}
