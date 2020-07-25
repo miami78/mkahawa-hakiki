@@ -5,7 +5,6 @@ const mapStyles = {
   width: '100%',
   height: '690px',
   position: 'absolute',
-  zIndex: '-1'
 };
 
 //map through rest and render marker
@@ -19,18 +18,11 @@ export class MapContainer extends React.Component {
         lng:31.7951872
       },
     };
-    this.googleMapRef = React.createRef()
   }
 
   componentDidMount() {
-    const googleMapScript = document.createElement('script')
-    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`
-    window.document.body.appendChild(googleMapScript)
-    googleMapScript.addEventListener("load", () => {
-      this.checkUserLocation()
-      this.googleMap = this.createGoogleMap();
-      this.marker = this.createMarker()
-    });
+    this.checkUserLocation()
+    this.createGoogleMap()
   }
   // Checks for geolocation
   checkUserLocation=()=>{
@@ -49,22 +41,18 @@ export class MapContainer extends React.Component {
   // Initialize google map
   createGoogleMap=()=> {
     // Create new instance of google map
-      new window.google.maps.Map(this.googleMapRef.current,{
+      new window.google.maps.Map(this.refs.map,{
         center: this.state.userPosition,
         zoom:15,
         styles:mapStyles
     })
   }
-  createMarker = () =>
-  new window.google.maps.Marker({
-    position: this.state.userPosition,
-    map: this.googleMap,
-  })
+
   render() {
     return (
       <div 
         id="google-map"
-        ref={this.googleMapRef}
+        ref="map"
         style= {mapStyles}
       />
       
