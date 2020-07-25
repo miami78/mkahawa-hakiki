@@ -1,6 +1,7 @@
 import React from 'react';
 
 import userIcon from '../../assets/user-icon.png';
+import placeHolder from '../../assets/photo-placeholder.png';
 
 const mapStyles = {
   width: '100%',
@@ -19,7 +20,8 @@ export class MapContainer extends React.Component {
         lng:31.7951872
       },
       map: null,
-      mapBounds:{}
+      mapBounds:{},
+      restaurants:[]
     };
   }
 
@@ -52,13 +54,13 @@ export class MapContainer extends React.Component {
 
       // event listener for mapbounds
       this.mapBoundsListener(map)
-      
+
       //Create instance of a user marker on the map
       let userMarker = new window.google.maps.Marker({
         position: this.state.userPosition,
         map:map,
         icon: userIcon
-      })
+      });
       this.setState({map:map})
       });
       
@@ -96,9 +98,60 @@ export class MapContainer extends React.Component {
     
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       restaurantArray = results.map(restaurant=> {
-        console.log(restaurant)
-        return restaurant
+
+        //get rating else return 0
+        let avgRating, totalRatings;
+        if(restaurant.rating){
+          avgRating = restaurant.rating;
+          totalRatings = restaurant.user_ratings_total;
+        }else {
+          avgRating = 0;
+          totalRatings = 0
+        };
+
+        //get opening hours or return false
+        let openNow;
+        if(restaurant.opening_hours){
+          openNow = restaurant.opening_hours.isOpen;
+        }else {
+          openNow = false;
+        };
+
+        // get price level or return 0
+        let priceLevel;
+        if(restaurant.price_level){
+          priceLevel = restaurant.price_level;
+        }else{
+          priceLevel = 0;
+        }
+
+        // get 1st photo of every restaurant else a placeholder
+        let photoUrl;
+        if(restaurant.photos){
+          photoUrl = restaurant.photos[0].getUrl({maxWidth: 600});
+        } else {
+          photoUrl = placeHolder;
+        }
+
+        return {
+          restaurantName: restaurant.name,
+          id: restaurant.place_id,
+          lat: restaurant.geometry.location.lat(),
+          lng: restaurant.geometry.location.lng(),
+          address:restaurant.vicinity,
+          avgRating: avgRating,
+          totalRatings: totalRatings,
+          price: priceLevel,
+          openNow: openNow,
+          photo: photoUrl
+        }
+
+        //Create instances of restaurant markers
+        
       })
+      //set the array of restaurants to state
+      this.setState({restaurants: restaurantArray})
+      console.log(this.state.restaurants)
     }
   }
   render() {
