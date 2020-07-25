@@ -24,11 +24,7 @@ export class MapContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.checkUserLocation()
-    this.createGoogleMap()
-  }
-  // Checks for geolocation
-  checkUserLocation=(map)=>{
+    // Checks for geolocation
     if(navigator.geolocation){
       // Get position from user and assign it to state
       navigator.geolocation.getCurrentPosition(position=>{
@@ -38,7 +34,14 @@ export class MapContainer extends React.Component {
         }})
         console.log(this.state.userPosition)
       });
-
+      // Create new instance of google map
+      let map;
+      map = new window.google.maps.Map(this.refs.map,{
+        center: this.state.userPosition,
+        zoom:15,
+        styles:mapStyles
+      })
+      this.mapBoundsListener(map)
       //Create instance of a user marker on the map
       let userMarker = new window.google.maps.Marker({
         position: this.state.userPosition,
@@ -51,16 +54,15 @@ export class MapContainer extends React.Component {
       alert("Geolocation not available")
     }
   }
-  // Initialize google map
-  createGoogleMap=()=> {
-    // Create new instance of google map
-    let map;
-      map = new window.google.maps.Map(this.refs.map,{
-        center: this.state.userPosition,
-        zoom:15,
-        styles:mapStyles
-    })
-  }
+  // // Checks for geolocation
+  // checkUserLocation=(map)=>{
+    
+  // }
+  // // Initialize google map
+  // createGoogleMap=()=> {
+    
+  // }
+
   // map bound event listener
   mapBoundsListener=(map)=>{
     // Updates when map is moved
@@ -68,6 +70,7 @@ export class MapContainer extends React.Component {
       this.setState({mapBounds: map.getBounds()});
     });
   }
+  
   render() {
     return (
       <div 
