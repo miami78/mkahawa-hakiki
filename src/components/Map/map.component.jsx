@@ -24,6 +24,10 @@ export class MapContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.initMap()
+  }
+  //Initialize google maps
+  initMap() {
     // Checks for geolocation
     if(navigator.geolocation){
       // Get position from user and assign it to state
@@ -48,29 +52,46 @@ export class MapContainer extends React.Component {
         map:map,
         icon: userIcon
       })
-      console.log(userMarker)
       this.setState({map:map})
     }else{
       alert("Geolocation not available")
     }
   }
-  // // Checks for geolocation
-  // checkUserLocation=(map)=>{
-    
-  // }
-  // // Initialize google map
-  // createGoogleMap=()=> {
-    
-  // }
 
   // map bound event listener
   mapBoundsListener=(map)=>{
     // Updates when map is moved
     window.google.maps.event.addListener(map, 'idle', ()=>{
       this.setState({mapBounds: map.getBounds()});
+      this.fetchPlaces()
     });
+    console.log(this.state.mapBounds)
   }
-  
+
+  //Fetch places 
+  fetchPlaces=()=> {
+    //Make request based on curent map bounds
+    let request = {
+      bounds: this.state.mapBounds,
+      type:['restaurant']
+    }
+
+    // google service request
+    let service = new window.google.maps.places.PlacesService(this.state.map);
+    service.nearbySearch(request, this.restaurantsDetails)
+  }
+
+  // Set places results
+  restaurantsDetails=(results, status)=>{
+    let restaurantArray;
+    
+    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+      restaurantArray = results.map(restaurant=> {
+        console.log(restaurant)
+        return restaurant
+      })
+    }
+  }
   render() {
     return (
       <div 
