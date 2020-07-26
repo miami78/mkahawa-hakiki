@@ -25,6 +25,7 @@ class RestaurantReviewCard extends React.Component {
   }
   render() {
     const { restaurants } = this.state;
+    const { showMore } = this.state;
 
     //console.log("DATA", this.props.rating);
 
@@ -37,7 +38,7 @@ class RestaurantReviewCard extends React.Component {
     }
 
     //console.log("FILTERED", filteredRestaurants);
-    const numberOfRatings = this.state.showMore ? restaurants.length : 1
+    const numberOfRatings = showMore ? restaurants.length : 1
     return (
       <div className="restaurant-list">
         {filteredRestaurants.map((restaurant, id) => (
@@ -54,7 +55,7 @@ class RestaurantReviewCard extends React.Component {
               </div>
             ))}
             <div className="right-arrow">
-              <img src={rightArrow} alt="enter arrow" onClick={()=> this.handleClick()}/>
+              <button class="right" onClick={()=> this.handleClick()}><i class="fas fa-angle-down"></i></button>
             </div>
           </div>
         ))}
