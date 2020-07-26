@@ -8,12 +8,16 @@
     .section {
         display: flex;
         flex-direction: column;
-        padding: 0 15px;
-        cursor: pointer;
         min-height: 112px;
-        padding: 10px 18px 10px 24px;
+        padding: 15px 15px 15px 15px;
+        margin: 10px 10px 0px 0px;
         flex: none;
         align-items: flex-start;
+        position: relative;
+        width: 300px;
+        background: white;
+        box-shadow: -4px -4px 12px rgb(255, 255, 255), 4px 4px 12px rgba(121, 130, 160, 0.747);
+        border-radius: 25px;
         
         .section-details {
             color: #70757A;
@@ -34,6 +38,22 @@
         }
         .section-divider-bottom-line {
             border-bottom: 1.5px solid #e6e6e6;
+        }
+        .right-arrow{
+            
+            .right{
+                cursor: pointer;
+                position: relative;
+                border-radius: 10px;
+                width: 40px;
+                height: 30px;
+                border: none;
+                outline: none;
+                margin-left: 100px;
+                box-shadow: -2px -2px 6px rgb(255, 255, 255), 2px 2px 6px rgba(121, 130, 160, 0.747);
+                font-size: 18px;
+                color: black;
+            }
         }
     }
 
