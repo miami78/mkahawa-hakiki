@@ -93,12 +93,20 @@ export class MapContainer extends React.Component {
   }
 
   // Set places results
-  restaurantsDetails=(results, status)=>{
+  restaurantsDetails=(results, status,map)=>{
     let restaurantArray;
-    
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-      restaurantArray = results.map(restaurant=> {
+      results.forEach((results)=>{
+        const marker = new window.google.maps.Marker({
+          position: results.geometry.location,
+          setMap: map,
+          title: results.title
+        });
+        console.log(results)
+      })
+      
 
+      restaurantArray = results.map(restaurant=> {
         //get rating else return 0
         let avgRating, totalRatings;
         if(restaurant.rating){
@@ -145,13 +153,15 @@ export class MapContainer extends React.Component {
           openNow: openNow,
           photo: photoUrl
         }
-
-        //Create instances of restaurant markers
-        
       })
+      
       //set the array of restaurants to state
       this.setState({restaurants: restaurantArray})
       console.log(this.state.restaurants)
+
+    }else{
+      restaurantArray = [];
+      this.setState({restaurants: restaurantArray})
     }
   }
   render() {
