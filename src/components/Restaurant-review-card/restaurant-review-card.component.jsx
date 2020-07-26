@@ -1,6 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Rate } from "antd";
+import rightArrow from "../../assets/right-arrow.png";
 import Restaurants from "../../data/api.json";
 
 import "./restaurant-review-card.styles.scss";
@@ -10,6 +11,7 @@ class RestaurantReviewCard extends React.Component {
     super(props);
     this.state = {
       restaurants: [],
+      showMore: false
     };
   }
   componentDidMount() {
@@ -17,6 +19,9 @@ class RestaurantReviewCard extends React.Component {
       restaurants: Restaurants
     });
     
+  }
+  handleClick() {
+    this.setState({showMore: true})
   }
   render() {
     const { restaurants } = this.state;
@@ -32,6 +37,7 @@ class RestaurantReviewCard extends React.Component {
     }
 
     //console.log("FILTERED", filteredRestaurants);
+    const numberOfRatings = this.state.showMore ? restaurants.length : 1
     return (
       <div className="restaurant-list">
         {filteredRestaurants.map((restaurant, id) => (
@@ -39,7 +45,7 @@ class RestaurantReviewCard extends React.Component {
             <div className="section-header">
               <h3>{restaurant.restaurantName}</h3>
             </div>
-            {restaurant.ratings.map((rating, j) => (
+            {restaurant.ratings.slice(0, numberOfRatings).map((rating, j) => (
               <div key={j} className="section-details">
                 <span>
                   <Rate disabled defaultValue={rating.stars} />
@@ -47,6 +53,9 @@ class RestaurantReviewCard extends React.Component {
                 <p>{rating.comment}</p>
               </div>
             ))}
+            <div className="right-arrow">
+              <img src={rightArrow} alt="enter arrow" onClick={()=> this.handleClick()}/>
+            </div>
           </div>
         ))}
       </div>
