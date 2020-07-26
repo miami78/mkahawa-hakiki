@@ -9,9 +9,8 @@ const Header= ()=> {
     return (
         <div className="header">
             <div className="logo-container"><ReactLogo /></div>
-            
-            <h1>MKAHAWA HAKIKI</h1>
-            <button onClick= {()=> setshowForm(!showForm)} className="custom-button">Add Restaurant</button>
+            <div className="heading"><h1>MKAHAWA HAKIKI</h1></div>
+            <span onClick= {()=> setshowForm(!showForm)} className="custom-button">Add Restaurant</span>
             {showForm && <div><RestaurantForm /></div>}
         </div>
     );
