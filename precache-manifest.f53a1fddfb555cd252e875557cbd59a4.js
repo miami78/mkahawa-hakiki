@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "68be4491d1ecb0fcab7e142e1f149cd4",
+    "revision": "ebe09de39baf17c436616f98c2d8700b",
     "url": "/mkahawa-hakiki/index.html"
   },
   {
