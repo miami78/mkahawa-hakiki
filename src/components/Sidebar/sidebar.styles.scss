@@ -4,15 +4,16 @@
     align-items: center;
     float: right;
     opacity: 1;
-    width: 360px;
+    width: 375px;
     height: 690px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    box-shadow: -4px -4px 12px rgba(0, 0, 0, 0.4), 4px 4px 12px rgba(121, 130, 160, 0.747);
     background: #fff;
     box-sizing: border-box;
     padding: 20px 0px;
     position: relative;
     z-index:2;
     overflow: auto;
+    border-radius: 5px;
     
     &::-webkit-scrollbar {
         width: 12px;               /* width of the entire scrollbar */
