@@ -1,26 +1,45 @@
-// export default getGoogleMaps() {
-//     // If we haven't already defined the promise, define it
-//     if (!this.googleMapsPromise) {
-//       this.googleMapsPromise = new Promise((resolve) => {
-//         // Add a global handler for when the API finishes loading
-//         window.resolveGoogleMapsPromise = () => {
-//           // Resolve the promise
-//           resolve(google);
+import React from 'react';
 
-//           // Tidy up
-//           delete window.resolveGoogleMapsPromise;
-//         };
+const mapStyles = {
+    width: '100%',
+    height: '690px',
+    position: 'absolute',
+  };
+class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.onScriptLoad = this.onScriptLoad.bind(this)
+  }
 
-//         // Load the Google Maps API
-//         const script = document.createElement("script");
-//         const API = 'AIzaSyDbAz1XXxDoKSU2nZXec89rcHPxgkvVoiw';
-//         script.src = `https://maps.googleapis.com/maps/api/js?key=${API}&callback=resolveGoogleMapsPromise`;
-//         script.async = true;
-//         document.body.appendChild(script);
-//       });
-//     };
+  onScriptLoad() {
+    const map = new window.google.maps.Map(
+      document.getElementById(this.props.id),
+      this.props.options);
+    this.props.onMapLoad(map)
+  }
 
-//     // Return a promise for the Google Maps API
-//     return this.googleMapsPromise;
-// };
-  
+  componentDidMount() {
+    if (!window.google) {
+      var s = document.createElement('script');
+      s.type = 'text/javascript';
+      s.src = `https://maps.google.com/maps/api/js?key=AIzaSyCELIdogZoAcCPrJrnbb5rU8VDoCRPBFh8&libraries=places`;
+      var x = document.getElementsByTagName('script')[0];
+      x.parentNode.insertBefore(s, x);
+      // Below is important. 
+      //We cannot access google.maps until it's finished loading
+      s.addEventListener('load', e => {
+        this.onScriptLoad()
+      })
+    } else {
+      this.onScriptLoad()
+    }
+  }
+
+  render() {
+    return (
+      <div style= {mapStyles} id={this.props.id} />
+    );
+  }
+}
+
+export default Map
