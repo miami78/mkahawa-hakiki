@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Map from '../../utils/getMap';
 import userIcon from '../../assets/user-icon.png';
 import placeHolder from '../../assets/photo-placeholder.png';
 
@@ -20,18 +20,15 @@ export class MapContainer extends React.Component {
         lng:31.7951872
       },
       map: null,
-      mapBounds:{},
       restaurants:[]
     };
   }
 
   componentDidMount() {
-    this.initMap()
+    this.getUserPosition()
   }
-  //Initialize google maps
-  initMap() {
-    
-    // Checks for geolocation
+  // Checks for geolocation
+  getUserPosition() {
     if(navigator.geolocation){
       
       // Get position from user and assign it to state
@@ -41,50 +38,20 @@ export class MapContainer extends React.Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         }});
-        console.log(this.state.userPosition)
-      
-        // Create new instance of google map
-      let map;
-      map = new window.google.maps.Map(document.getElementById('map'),{
-        center: this.state.userPosition,
-        zoom: 15,
-        styles: mapStyles
-      })
-      console.log(this.state.userPosition)
-
-      // event listener for mapbounds
-      this.mapBoundsListener(map)
-
-      //Create instance of a user marker on the map
-      let userMarker = new window.google.maps.Marker({
-        position: this.state.userPosition,
-        map:map,
-        icon: userIcon
       });
-      this.setState({map:map})
-      });
-      
     }else{
       alert("Geolocation not available")
     }
   }
-
-  // map bound event listener
-  mapBoundsListener=(map)=>{
-    // Updates when map is moved
-    window.google.maps.event.addListener(map, 'idle', ()=>{
-      this.setState({mapBounds: map.getBounds()});
-      this.fetchPlaces()
-    });
-    console.log(this.state.mapBounds)
-  }
-
+  
   //Fetch places 
   fetchPlaces=()=> {
     //Make request based on curent map bounds
     let request = {
-      bounds: this.state.mapBounds,
-      type:['restaurant']
+      //bounds: this.state.mapBounds,
+      location:this.state.userPosition,
+      type:['restaurant'],
+      radius: 500
     }
 
     // google service request
@@ -93,16 +60,16 @@ export class MapContainer extends React.Component {
   }
 
   // Set places results
-  restaurantsDetails=(results, status,map)=>{
+  restaurantsDetails=(results, status)=>{
     let restaurantArray;
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       results.forEach((results)=>{
         const marker = new window.google.maps.Marker({
           position: results.geometry.location,
-          setMap: map,
+          map: this.state.map,
           title: results.title
         });
-        console.log(results)
+        console.log(results.geometry.location)
       })
       
 
@@ -166,9 +133,23 @@ export class MapContainer extends React.Component {
   }
   render() {
     return (
-      <div 
-        id="map"
-        style= {mapStyles}
+      <Map
+      id="myMap"
+        options={{
+          center:  this.state.userPosition,
+          zoom: 15
+        }}
+        onMapLoad={map => {
+                //Create instance of a user marker on the map
+        let userMarker = new window.google.maps.Marker({
+          position: this.state.userPosition,
+          map:map,
+          title: "user location",
+          //icon: userIcon
+        });
+        this.setState({map:map})
+        this.fetchPlaces()
+        }}
       />
       
     );
