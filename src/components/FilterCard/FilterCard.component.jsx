@@ -2,7 +2,7 @@ import React from "react";
 import "antd/dist/antd.css";
 import { Rate } from "antd";
 
-import "./filter-card.styles.scss";
+import "./FilterCard.styles.scss";
 
 class FilterCard extends React.Component {
   constructor(props) {

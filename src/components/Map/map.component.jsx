@@ -69,7 +69,6 @@ export class MapContainer extends React.Component {
           map: this.state.map,
           title: results.title
         });
-        console.log(results.geometry.location)
       })
       
 
@@ -124,12 +123,12 @@ export class MapContainer extends React.Component {
       
       //set the array of restaurants to state
       this.setState({restaurants: restaurantArray})
-      console.log(this.state.restaurants)
 
     }else{
       restaurantArray = [];
       this.setState({restaurants: restaurantArray})
     }
+    console.log(this.state.restaurants)
   }
   render() {
     return (
@@ -140,7 +139,7 @@ export class MapContainer extends React.Component {
           zoom: 15
         }}
         onMapLoad={map => {
-                //Create instance of a user marker on the map
+        //Create instance of a user marker on the map
         let userMarker = new window.google.maps.Marker({
           position: this.state.userPosition,
           map:map,

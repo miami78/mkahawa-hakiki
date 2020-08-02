@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './form.styles.scss';
+import './Form.styles.scss';
 
 class RestaurantForm extends React.Component{
     constructor(props){
