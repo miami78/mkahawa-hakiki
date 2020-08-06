@@ -22,7 +22,7 @@ class Map extends React.Component {
     if (!window.google) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
-      s.src = `https://maps.google.com/maps/api/js?key=AIzaSyCELIdogZoAcCPrJrnbb5rU8VDoCRPBFh8&libraries=places`;
+      s.src = `https://maps.google.com/maps/api/js?key=[API KEY]&libraries=places`;
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
       // Below is important. 
