@@ -23,10 +23,11 @@ export class MapContainer extends React.Component {
       restaurants:[]
     };
   }
-
+  
   componentDidMount() {
     this.getUserPosition()
   }
+  
   // Checks for geolocation
   getUserPosition() {
     if(navigator.geolocation){
@@ -129,6 +130,9 @@ export class MapContainer extends React.Component {
       this.setState({restaurants: restaurantArray})
     }
     console.log(this.state.restaurants)
+    this.props.onDataReceived(this.state.restaurants)
+    this.props.onMapLoaded(this.state.map)
+    
   }
   render() {
     return (
@@ -147,6 +151,8 @@ export class MapContainer extends React.Component {
           //icon: userIcon
         });
         this.setState({map:map})
+        console.log(this.props)
+        this.props.onMapLoaded(this.state.map)
         this.fetchPlaces()
         }}
       />

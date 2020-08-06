@@ -26,7 +26,11 @@ class SideBar extends React.Component {
     return (
       <div className="restaurant-card">
         <FilterCard handleFilterChange={this.handleFilterChange} />
-        
+        <RestaurantList 
+          rating={this.state.filteredRating}
+          gRestaurantData={this.props.gRestaurantData}
+          mapObject={this.props.mapObject}
+        />
       </div>
     );
   }
