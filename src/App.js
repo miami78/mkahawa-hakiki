@@ -8,14 +8,18 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      restaurants:[]
+      restaurants:[],
+      map:null
     };
-    console.log(this.props)
   }
   //temp function to see if everythings working
   fetchRestaurantData=(restaurants)=>{
     this.setState({ restaurants: restaurants });
-    
+    console.log(restaurants)
+  }
+  fetchMapObject=(map)=>{
+    this.setState({ map: map });
+    console.log(this.state.map)
   }
   //pass in props 
   //in mapcontainer call the function that was passed as props in the callback function
@@ -23,8 +27,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <MapContainer />
-        <SideBar fetchRestaurantData={this.fetchRestaurantData}/>
+        <MapContainer 
+        onMapLoaded={this.fetchMapObject}
+        onDataReceived={this.fetchRestaurantData}/>
+        <SideBar 
+        mapObject={this.state.map}
+        gRestaurantData={this.state.restaurants} />
       </div>
     );
   }
