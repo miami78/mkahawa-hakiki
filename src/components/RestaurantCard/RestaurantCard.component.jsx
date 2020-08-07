@@ -59,7 +59,16 @@ class RestaurantCard extends React.Component {
                 <div className="section-header">
                     <h3>{this.props.restaurantName}</h3>
                 </div>
-                
+                <div className="section-details">
+                    <span><Rate disabled defaultValue={this.state.restaurant.rating} /></span>
+                    {this.state.restaurant.reviews.map((review, j) => ( 
+                        <div key={j}>
+                            <p>{review.author_name}</p>
+                            <p>{review.rating}</p>
+                            <p>{review.text}</p>
+                        </div>
+                    ))} 
+                </div>
                 <div className="right-arrow">
                     <button className="right" onClick={()=>this.handleClick()}><i className="fas fa-angle-down"></i></button>
                 </div>
