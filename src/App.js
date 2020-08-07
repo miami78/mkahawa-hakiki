@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header.component';
+import Header from './components/Header/header.component';
 import MapContainer from './components/MapContainer/MapContainer.component';
-import SideBar from './components/Sidebar/Sidebar.component';
+import SideBar from './components/SideBar/SideBar.component';
 
 class App extends React.Component {
   constructor (props) {

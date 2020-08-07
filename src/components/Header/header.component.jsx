@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './Header.styles.scss';
+import './header.styles.scss';
 import RestaurantForm from '../Form/form.component';
 
 

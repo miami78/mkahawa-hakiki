@@ -2,7 +2,7 @@ import React from "react";
 import FilterCard from "../FilterCard/FilterCard.component";
 import RestaurantList from "../RestaurantList/RestaurantList.component";
 
-import "./Sidebar.styles.scss";
+import "./SideBar.styles.scss";
 
 class SideBar extends React.Component {
   constructor(props) {
