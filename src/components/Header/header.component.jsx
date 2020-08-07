@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Header.styles.scss';
-import RestaurantForm from '../Form/Form.component';
+import RestaurantForm from '../Form/form.component';
 
 
 //Pass a function ref as props to trigger a function to the parent component
