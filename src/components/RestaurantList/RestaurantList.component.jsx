@@ -11,23 +11,15 @@ class RestaurantList extends React.Component {
       restaurants: [],
       map:null
     };
-    console.log(this.props)
-  }
-  componentDidMount(){
-    this.setState({map:this.props.mapObject})
-    console.log(this.state.map)
   }
   render() {
+    
     const filteredGRestaurants = this.props.gRestaurantData;
-    console.log(filteredGRestaurants)
-    console.log(Restaurant)
 
     const filteredRestaurants = [];
     for (let i = 0; i < Restaurant.length; i++) {
-      //   console.log("OLA", restaurants[i].rating, this.props.filteredRating);
       if (Restaurant[i].rating >= this.props.rating) {
         filteredRestaurants.push(Restaurant[i]);
-        console.log(filteredRestaurants)
       }
     }
     return (
@@ -35,14 +27,15 @@ class RestaurantList extends React.Component {
         {filteredGRestaurants.map((restaurant, index)=>(
           <RestaurantCard 
           key={index}
+            mapObject={this.props.mapObject}
             isGoogle={true}
+            id={restaurant.id}
             restaurantName={restaurant.restaurantName}
             rating={[]}
           />
         ))}
         {filteredRestaurants.map((restaurant, index)=>(
           <RestaurantCard 
-          //pass in comments
            key={index}
            isGoogle={false}
            rating={restaurant.ratings}
@@ -53,5 +46,4 @@ class RestaurantList extends React.Component {
     );
   }
 }
-//Put the whole section on its own component
 export default RestaurantList;
