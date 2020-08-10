@@ -9,17 +9,20 @@ class RestaurantCard extends React.Component {
         super(props);
         this.state = {
             showMore: false,
-            restaurant:[]
+            restaurant:{
+                name: "",
+                rating: 1,
+                reviews: [],
+                business_status:"" ,
+                opening_hours:{
+                    weekday_text:["NOT AVAILABLE"]
+                }
+            },
+            
         }
     }
+
     handleClick=()=> {
-        //check if show more is false if it is then set it to true {
-            //check if isGoogle is true, 
-            // if so then do the getDetailsSearch
-            //store getDetails Review array in state
-            //else do nothing
-        //}
-        //else set show more to false
         if(this.state.showMore === false){
             //set showMore to true
             this.setState({
@@ -39,7 +42,7 @@ class RestaurantCard extends React.Component {
                         return {
                             name: place.name,
                             rating: place.rating,
-                            reviews: place.review
+                            reviews: place.review,
                         }
                     }
                 }
@@ -54,21 +57,55 @@ class RestaurantCard extends React.Component {
     }
     
     render(){
+        const noReviewAvailable = !this.state.restaurant.reviews;
+        const noOpeningHours = !this.state.restaurant.opening_hours;
         return (
             <div className="section">
                 <div className="section-header">
                     <h3>{this.props.restaurantName}</h3>
                 </div>
-                <div className="section-details">
-                    <span><Rate disabled defaultValue={this.state.restaurant.rating} /></span>
-                    {this.state.restaurant.reviews.map((review, j) => ( 
-                        <div key={j}>
-                            <p>{review.author_name}</p>
-                            <p>{review.rating}</p>
-                            <p>{review.text}</p>
-                        </div>
-                    ))} 
+                <div className="section-ratings">
+                    <p>({this.props.totalRatings})</p>
+                    <span><Rate allowHalf disabled value={this.props.rating} /></span>
                 </div>
+                <div className="section-details">
+                    <img alt="restaurant" src={this.props.photo} />
+                    <p>{this.props.address}</p>
+                    <p>{this.props.openNow}</p>
+                </div>
+                {(() => {
+                    if (noReviewAvailable && noOpeningHours) {
+                        return (
+                          <div><h2>No data available</h2></div>
+                        )
+                        
+                    }else if (noReviewAvailable) {
+                        return(
+                            <div className="open-hours">
+                                <h2>No review available</h2>
+                                <h3>Opening hours</h3>
+                                {this.state.restaurant.opening_hours.weekday_text.map((day,i)=>(
+                                    <p key={i}><br/>{day}</p>
+                                ))}
+                                
+                            </div> 
+                        )   
+                    }else{
+                        return (
+                            <div className="section-details-review">
+                                {this.state.restaurant.reviews.map((review, j) => ( 
+                                    <div className="review-text"key={j}>
+                                        <h2>{review.author_name}</h2>
+                                        <span><Rate disabled value={review.rating} /></span>
+                                        <p>{review.text}</p>
+                                        <div className="border-bottom"></div>
+                                    </div>
+                                ))} 
+                            </div>
+                        )
+                    }
+                })()}
+                
                 <div className="right-arrow">
                     <button className="right" onClick={()=>this.handleClick()}><i className="fas fa-angle-down"></i></button>
                 </div>
@@ -77,4 +114,6 @@ class RestaurantCard extends React.Component {
     }
 }
 
+
+//if else statement
 export default RestaurantCard;
