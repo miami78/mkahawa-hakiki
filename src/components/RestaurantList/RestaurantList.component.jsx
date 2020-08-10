@@ -14,7 +14,7 @@ class RestaurantList extends React.Component {
   }
   render() {
     
-    const filteredGRestaurants = this.props.gRestaurantData;
+    const filteredGRestaurants = this.props.gRestaurantData;;
 
     const filteredRestaurants = [];
     for (let i = 0; i < Restaurant.length; i++) {
@@ -31,7 +31,11 @@ class RestaurantList extends React.Component {
             isGoogle={true}
             id={restaurant.id}
             restaurantName={restaurant.restaurantName}
-            rating={[]}
+            rating={restaurant.avgRating}
+            address={restaurant.address}
+            photo={restaurant.photo}
+            openNow={restaurant.openNow}
+            totalRatings={restaurant.totalRatings}
           />
         ))}
         {filteredRestaurants.map((restaurant, index)=>(
