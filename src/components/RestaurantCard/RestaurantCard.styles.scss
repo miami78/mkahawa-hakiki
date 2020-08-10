@@ -14,24 +14,67 @@
     
     .section-details {
         color: #70757A;
-        display: inline-block;
-        font-size: 13px;
-        line-height: 16px;
+        display: flex;
+        flex-direction: column;
+        font-size: 15px;
+        //line-height: 16px;
+        text-align: left;
+
+
+        img{
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+    }
+
+    .open-hours{
         text-align: left;
     }
     
-    .section-header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+    .section-details-review{
+        line-height: 19px;
+        min-height: 40px;
+        margin: 8px 0;
+        text-align: left;
 
+        .border-bottom{
+            border-bottom: 1px solid #e6e6e6;
+            height: 10px;
+        }
+        
+        
+
+        .review-text{
+            line-height: 1.5;
+            margin: 10px 0;
+            
+            h2{
+                font-size: 15px;
+            }
+            
+        }
+    }
+    .section-header {
         h3{
             margin: 0px 0px;
         }
     }
+
+    .section-ratings{
+        display: flex;
+        flex-direction: row;
+
+        p{
+            padding-top: 8px;
+            padding-right: 5px;
+        }
+    }
+
     .section-divider-bottom-line {
         border-bottom: 1.5px solid #e6e6e6;
     }
+
     .right-arrow{
         
         .right{
