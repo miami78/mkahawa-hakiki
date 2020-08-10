@@ -101,7 +101,7 @@ export class MapContainer extends React.Component {
         // get 1st photo of every restaurant else a placeholder
         let photoUrl;
         if (restaurant.photos) {
-          photoUrl = restaurant.photos[0].getUrl({ maxWidth: 600 });
+          photoUrl = restaurant.photos[0].getUrl({ maxWidth: 80,maxHeight: 80 });
         } else {
           photoUrl = placeHolder;
         }
@@ -122,6 +122,7 @@ export class MapContainer extends React.Component {
 
       //set the array of restaurants to state
       this.setState({ restaurants: restaurantArray });
+      console.log(restaurantArray)
     } else {
       restaurantArray = [];
       this.setState({ restaurants: restaurantArray });
