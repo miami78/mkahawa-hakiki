@@ -1,13 +1,8 @@
 import React from 'react';
 import Map from '../../utils/getMap';
+import RestaurantForm from '../Form/form.component';
 import userIcon from '../../assets/user-icon.png';
-import placeHolder from '../../assets/photo-placeholder.png';
-
-const mapStyles = {
-  width: "100%",
-  height: "690px",
-  position: "absolute"
-};
+import placeHolder from '../../assets/placeholder.png';
 
 //map through rest and render marker
 export class MapContainer extends React.Component {
@@ -18,13 +13,32 @@ export class MapContainer extends React.Component {
         lat: -1.328635,
         lng: 31.7951872
       },
+      restPos: {
+        lat: -1.328635,
+        lng: 31.7951872
+      },
       map: null,
-      restaurants: []
+      restaurants: [],
+      newRestaurants: [],
+      isMapClicked: false,
+      lat:"",
+      lng:"",
+      showForm: false,
+      mapBounds:{
+        east: 36.87211077497662,
+        north: -1.2455600060195045,
+        south: -1.2159552503047664,
+        west: 36.91581576259662
+      }
     };
   }
 
   componentDidMount() {
     this.getUserPosition();
+  }
+
+  componentDidUpdate(){
+    this.getUserPosition()
   }
 
   // Checks for geolocation
@@ -37,23 +51,22 @@ export class MapContainer extends React.Component {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           }
-        });
+        }); 
       });
     } else {
       alert("Geolocation not available");
     }
   }
-
+  
   //Fetch places
-  fetchPlaces = () => {
-    //Make request based on curent map bounds
+  fetchPlaces = (location) => {
+    //Make request based on current map bounds
     let request = {
+      location: location,
       //bounds: this.state.mapBounds,
-      location: this.state.userPosition,
       type: ["restaurant"],
-      radius: 500
+      radius: 200
     };
-
     // google service request
     let service = new window.google.maps.places.PlacesService(this.state.map);
     service.nearbySearch(request, this.restaurantsDetails);
@@ -64,11 +77,15 @@ export class MapContainer extends React.Component {
     let restaurantArray;
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       results.forEach((results) => {
+        //store an array of markers
+        //copy same as restaurant array
         const marker = new window.google.maps.Marker({
           position: results.geometry.location,
           map: this.state.map,
           title: results.title
         });
+        //get json ,filter and for each add marker
+        //only use json data for markers
       });
 
       restaurantArray = results.map((restaurant) => {
@@ -101,7 +118,7 @@ export class MapContainer extends React.Component {
         // get 1st photo of every restaurant else a placeholder
         let photoUrl;
         if (restaurant.photos) {
-          photoUrl = restaurant.photos[0].getUrl({ maxWidth: 80,maxHeight: 80 });
+          photoUrl = restaurant.photos[0].getUrl();
         } else {
           photoUrl = placeHolder;
         }
@@ -122,15 +139,34 @@ export class MapContainer extends React.Component {
 
       //set the array of restaurants to state
       this.setState({ restaurants: restaurantArray });
-      console.log(restaurantArray)
     } else {
       restaurantArray = [];
       this.setState({ restaurants: restaurantArray });
     }
     this.props.onDataReceived(this.state.restaurants);
   };
+
+  //function that gets restaurant data from the form component
+
+  createRestaurantFromFormData=(RestaurantName, rating)=>{
+    let newRestaurant = new window.google.maps.Marker({
+      position: this.state.restPos,
+      map: this.state.map,
+      title: "restaurant location",
+      icon: userIcon
+    });
+    let newRestaurantArray = this.state.newRestaurants;
+    newRestaurantArray.push({
+      restaurantName: RestaurantName,
+      rating: rating
+    })
+    this.setState({ newRestaurants: newRestaurantArray})
+    this.props.onNewRestData(newRestaurantArray)
+  }
+
   render() {
     return (
+      <div>
       <Map
         id="myMap"
         options={{
@@ -147,9 +183,30 @@ export class MapContainer extends React.Component {
           });
           this.setState({ map: map });
           this.props.onMapLoaded(map);
-          this.fetchPlaces();
+          //this.fetchPlaces(this.state.userPosition);
         }}
-      />
+        updateBounds={(map)=>{
+          
+          //remove old markers,have access
+          this.fetchPlaces(map.getCenter())
+        }}
+        onClick={(e)=>{
+          let latitude = e.latLng.lat()
+          let longitude = e.latLng.lng()
+          this.setState({
+            restPos: {
+              lat: latitude,
+              lng: longitude
+            },
+          })
+          //set show form to true
+          this.setState({
+            showForm: true
+          })
+        }}>
+      </Map>
+      {this.state.showForm && <div><RestaurantForm onRestSubmit={this.createRestaurantFromFormData}/></div>}
+      </div>
     );
   }
 }
