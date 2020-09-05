@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       restaurants:[],
+      newRestaurantDAta:[],
       map:null
     };
   }
@@ -20,6 +21,11 @@ class App extends React.Component {
   fetchMapObject=(map)=>{
     this.setState({ map: map });
   }
+  //pass in new rest array from map container 
+  fetchNewRestaurantData=(newRestaurants)=>{
+    this.setState({ newRestaurantDAta: newRestaurants });
+    console.log(newRestaurants)
+  }
   
   render() {
     return (
@@ -28,10 +34,14 @@ class App extends React.Component {
         <MapContainer 
         onMapLoaded={this.fetchMapObject}
         onDataReceived={this.fetchRestaurantData}
+        onNewRestData={this.fetchNewRestaurantData}
         />
         <SideBar 
+        id= "streetview"
         mapObject={this.state.map}
-        gRestaurantData={this.state.restaurants} />
+        gRestaurantData={this.state.restaurants} 
+        newRestaurants={this.state.newRestaurantDAta}
+        />
       </div>
     );
   }
