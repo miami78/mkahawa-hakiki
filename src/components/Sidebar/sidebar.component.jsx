@@ -16,14 +16,16 @@ class SideBar extends React.Component {
     this.setState({ filteredRating: rating });
   };
 
+  
   render() {
     return (
-      <div className="restaurant-card">
+      <div className="restaurant-card"  id={this.props.id}>
         <FilterCard handleFilterChange={this.handleFilterChange} />
         <RestaurantList
           rating={this.state.filteredRating}
           gRestaurantData={this.props.gRestaurantData}
           mapObject={this.props.mapObject}
+          newRestaurants={this.props.newRestaurants}
         />
       </div>
     );
