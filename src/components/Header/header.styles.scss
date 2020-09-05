@@ -1,15 +1,16 @@
 .header {
-    height: 70px;
+    height: 95px;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
     color: black;
     text-transform: uppercase;
     font-family: 'Open Sans Condensed';
     font-weight: bolder;
     align-items: center;
     z-index: 0;
+    background: linear-gradient(119.36deg, #464C6E 0%, #272B45 100%);
+    
 
     @media screen and (max-width: 400px) {
             display: flex;
@@ -17,23 +18,24 @@
             height: 125px;
     }
     
-    
-
     .logo-container {
         display: block;
         position: relative;
-        width: 150px;
+        width: 140px;
         height: 70px;
-        background: white;
-        box-shadow: -2px -2px 12px rgb(255, 255, 255), 4px 4px 12px rgba(121, 130, 160, 0.647);
+        background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
+        box-shadow: -2px -2px 12px rgba(34, 38, 61, 0.2), 4px 4px 12px rgba(42, 47, 74, 0.52),inset 2px 2px 2px rgba(83, 92, 136, 0.08);
         border-radius: 35px;
+        cursor: pointer;
+        margin-left: 10px;
+        margin-top: 10px;
         
         h1{
             font-size: 50px;
+            font-weight: bold;
             text-align: center;
             line-height: 75px;
-            background: -webkit-gradient(linear, left top, right top, from(rgb(36, 35, 35)), to(#abb0bb));
-            background: linear-gradient(to right, rgb(36, 35, 35), #abb0bb);
+            background: #D2D6EF;
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -49,50 +51,5 @@
                 line-height: 75px;
             }
         }
-    }
-    .custom-button {
-        display: block;
-        position: relative;
-        box-shadow:-4px -4px 12px rgb(255, 255, 255),
-         4px 4px 12px rgba(121, 130, 160, 0.747);
-        width: 220px;
-        height: 45px;
-        border-radius: 50px;
-        font-size: 18px;
-        font-weight: bold;
-        outline: none;
-        border: none;
-        background-color: white;
-        color: black;
-        text-transform: uppercase;
-        font-family: 'Open Sans Condensed';
-        line-height: 36px;
-        margin: 20px;
-        padding: 5px 15px;
-        cursor:pointer;
-
-        
-        @media screen and (max-width: 570px) {
-            
-            font-size: 17px;
-            
-        }
-        @media screen and (max-width: 515px) {
-            
-            font-size: 16px;
-            
-        }
-        @media screen and (max-width: 445px) {
-            
-            font-size: 15px;
-            
-        }
-
-    
-    &:hover {
-        box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
-    inset  4px 4px 8px rgba(121, 130, 160, 0.747);
-    }
-    
     }
 }

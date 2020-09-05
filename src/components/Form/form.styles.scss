@@ -10,7 +10,7 @@
     top: 160px;
     position: absolute;
     z-index: 3;
-    background: #FFFFFF;
+    background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
     border-radius: 25px;
     margin: 0 auto 100px;
     padding: 45px;
@@ -24,9 +24,15 @@
                 0 100px 80px rgba(0, 0, 0, 0.12); 
 
     input {
+        color: #D2D6EF;
+        background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
         border-radius: 25px;
         padding: 10px;
         margin: 5px;
+
+        &::placeholder { 
+            color: #D2D6EF;
+          }
     }
 
     button{
@@ -39,25 +45,24 @@
         padding: 0 35px 0 35px;
         margin: 20px;
         font-size: 15px;
-        background-color: white;
-        color: black;
+        background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
+        color: #D2D6EF;
         text-transform: uppercase;
         font-family: 'Open Sans Condensed';
         font-weight: bolder;
         border: none;
         cursor: pointer;
-        box-shadow:   
+        box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52),inset 2px 2px 2px rgba(83, 92, 136, 0.08);
+        
+        
+            &:hover {
+                box-shadow:   
                 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
                 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
                 0 12.5px 10px rgba(0, 0, 0, 0.06),
                 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
                 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
                 0 100px 80px rgba(0, 0, 0, 0.12); 
-        
-        &:hover {
-            background-color: white;
-            color: black;
-            border: 1px solid black;
-        }
+            }
     }
 }

@@ -3,6 +3,7 @@
     flex-direction: column;
     padding: 10px 0px;
     width: 300px;
+    //background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
     
     
     .section {
@@ -14,13 +15,14 @@
         flex: none;
         align-items: flex-start;
         position: relative;
+        color: #D2D6EF;
         width: 300px;
-        background: white;
-        box-shadow: -4px -4px 12px rgb(255, 255, 255), 4px 4px 12px rgba(121, 130, 160, 0.747);
+        background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
+        box-shadow: -4px -4px 12px rgba(34, 38, 61, 0.2), 4px 4px 12px rgba(42, 47, 74, 0.52),rgba(83, 92, 136, 0.08);
         border-radius: 25px;
         
         .section-details {
-            color: #70757A;
+            color: #D2D6EF;
             display: inline-block;
             font-size: 13px;
             line-height: 16px;
@@ -34,6 +36,7 @@
 
             h3{
                 margin: 0px 0px;
+                color: #D2D6EF;
             }
         }
         .section-divider-bottom-line {
@@ -47,7 +50,7 @@
                 cursor: pointer;
                 position: relative;
                 border-radius: 10px;
-                background-color: white;
+                background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
                 outline: none;
                 border: none;
                 width: 40px;
@@ -55,13 +58,18 @@
                 border: none;
                 outline: none;
                 margin-left: 100px;
-                box-shadow: -2px -2px 6px rgb(255, 255, 255), 2px 2px 6px rgba(121, 130, 160, 0.747);
+                box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52),inset 2px 2px 2px rgba(83, 92, 136, 0.08);
                 font-size: 18px;
                 color: black;
 
                 &:hover {
-                    box-shadow:inset -4px -4px 8px rgb(255, 255, 255),
-                inset  4px 4px 8px rgba(121, 130, 160, 0.747);
+                    box-shadow:   
+                    0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+                    0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+                    0 12.5px 10px rgba(0, 0, 0, 0.06),
+                    0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+                    0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+                    0 100px 80px rgba(0, 0, 0, 0.12); 
                 }
             }
         }
