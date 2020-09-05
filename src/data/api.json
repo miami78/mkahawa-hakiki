@@ -5,16 +5,19 @@
        "lat":-1.2830004,
        "long":36.7699554,
        "rating":5,
-       "ratings":[
+       "reviews":[
           {
-             "stars":5,
-             "comment":"Please to experience Western African dishes. Live music, friendly stuffs. Ambience! Awesome children playing area."
+            "author_name": "Random Name",
+             "rating":5,
+             "text":"Please to experience Western African dishes. Live music, friendly stuffs. Ambience! Awesome children playing area."
           },
           {
-             "stars":5,
-             "comment":"The place has a beautiful gardenic setting with great and marvellous service. And the food....wow wow wow! "
+            "author_name": "Random Name",
+             "rating":5,
+             "text":"The place has a beautiful gardenic setting with great and marvellous service. And the food....wow wow wow! "
           }
-       ]
+       ],
+       "photo": "https://www.google.com/logos/doodles/2020/celebrating-mekatilili-wa-menza-6753651837108405-2x.png"
     },
     {
        "restaurantName":"Burger King",
@@ -22,16 +25,20 @@
        "lat":-1.2855332,
        "long":36.7691845,
        "rating":4,
-       "ratings":[
+       "reviews":[
           {
-             "stars":5,
-             "comment":"Good food"
+            "author_name": "Random Name",
+             "rating":5,
+             "text":"Good food"
           },
           {
-             "stars":3,
-             "comment":"Meh, it was fine."
+            "author_name": "Random Name",
+             "rating":3,
+             "text":"Meh, it was fine."
           }
        ]
+       ,
+       "photo": "https://www.google.com/logos/doodles/2020/celebrating-mekatilili-wa-menza-6753651837108405-2x.png"
     },
     {
       "restaurantName":"Cheka Japanese Izakaya",
@@ -39,16 +46,20 @@
       "lat":-1.2868786,
       "long":36.7692029,
       "rating":4,
-      "ratings":[
+      "reviews":[
          {
-            "stars":3,
-            "comment":"Food is amazing. Excellent. Delicious. Just be aware that the table food won't come out at the same time."
+            "author_name": "Random Name",
+            "rating":3,
+            "text":"Food is amazing. Excellent. Delicious. Just be aware that the table food won't come out at the same time."
          },
          {
-            "stars":5,
-            "comment":"Authentic Japanese experience.  Last time I was there we chose to go to the little area where you need to take off your shoes and sit on the floor - I just wanted to get an idea of how that would feel and I'm glad to say that I enjoyed it immensely.  "
+            "author_name": "Random Name",
+            "rating":5,
+            "text":"Authentic Japanese experience.  Last time I was there we chose to go to the little area where you need to take off your shoes and sit on the floor - I just wanted to get an idea of how that would feel and I'm glad to say that I enjoyed it immensely.  "
          }
       ]
+      ,
+       "photo": "https://www.google.com/logos/doodles/2020/celebrating-mekatilili-wa-menza-6753651837108405-2x.png"
    },
    {
       "restaurantName":"La Salumeria Restaurant",
@@ -56,16 +67,20 @@
       "lat":-1.2889698,
       "long":36.7700101,
       "rating":3,
-      "ratings":[
+      "reviews":[
          {
-            "stars":4,
-            "comment":"One of the best waiters in Nairobi! Great and professional service! Older gentleman who wears spectacles. Really knows his food and wine. I didn't enjoy my beef canelloni because the meat was more like sausage meat as opposed to a beef"
+            "author_name": "Random Name",
+            "rating":4,
+            "text":"One of the best waiters in Nairobi! Great and professional service! Older gentleman who wears spectacles. Really knows his food and wine. I didn't enjoy my beef canelloni because the meat was more like sausage meat as opposed to a beef"
          },
          {
-            "stars":2,
-            "comment":"Very decent Italian food. Service rather slow, but friendly when they get to you"
+            "author_name": "Random Name",
+            "rating":2,
+            "text":"Very decent Italian food. Service rather slow, but friendly when they get to you"
          }
       ]
+      ,
+       "photo": "https://www.google.com/logos/doodles/2020/celebrating-mekatilili-wa-menza-6753651837108405-2x.png"
    },
    {
       "restaurantName":"Pizza Inn-Valley Arcade",
@@ -73,16 +88,20 @@
       "lat":-1.2899279,
       "long":36.77266,
       "rating":2,
-      "ratings":[
+      "reviews":[
          {
-            "stars":3,
-            "comment":" Perhaps not the best but decent for fast-food."
+            "author_name": "Random Name",
+            "rating":3,
+            "text":" Perhaps not the best but decent for fast-food."
          },
          {
-            "stars":1,
-            "comment":" I'm never ordering from Pizza Inn again. I'll use Debonairs Pizza instead."
+            "author_name": "Random Name",
+            "rating":1,
+            "text":" I'm never ordering from Pizza Inn again. I'll use Debonairs Pizza instead."
          }
       ]
+      ,
+       "photo": "https://www.google.com/logos/doodles/2020/celebrating-mekatilili-wa-menza-6753651837108405-2x.png"
    }
    ,
    {
@@ -91,15 +110,19 @@
       "lat":-1.2902054,
       "long":36.7748425,
       "rating":4.5,
-      "ratings":[
+      "reviews":[
          {
-            "stars":4,
-            "comment":"Bulgogi and fried chicken were delicious but little bit salty for me. There was playground for kids so my son enjoyed. "
+            "author_name": "Random Name",
+            "rating":4,
+            "text":"Bulgogi and fried chicken were delicious but little bit salty for me. There was playground for kids so my son enjoyed. "
          },
          {
-            "stars":5,
-            "comment":"Awesome food, great service, and perfect ambiance. Location is also easy to get to."
+            "author_name": "Random Name",
+            "rating":5,
+            "text":"Awesome food, great service, and perfect ambiance. Location is also easy to get to."
          }
       ]
+      ,
+       "photo": "https://www.google.com/logos/doodles/2020/celebrating-mekatilili-wa-menza-6753651837108405-2x.png"
    }
  ]
