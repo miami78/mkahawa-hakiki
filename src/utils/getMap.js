@@ -4,6 +4,7 @@ const mapStyles = {
     width: '100%',
     height: '690px',
     position: 'absolute',
+    filter: 'brightness(90%)'
   };
 class Map extends React.Component {
   constructor(props) {
@@ -15,14 +16,21 @@ class Map extends React.Component {
     const map = new window.google.maps.Map(
       document.getElementById(this.props.id),
       this.props.options);
-    this.props.onMapLoad(map)
+      this.props.onMapLoad(map);
+      
+      map.addListener('click', e =>{
+        this.props.onClick(e, map)
+      })
+      map.addListener('bounds_changed', () => {
+        this.props.updateBounds(map)
+      });
   }
 
   componentDidMount() {
     if (!window.google) {
       var s = document.createElement('script');
       s.type = 'text/javascript';
-      s.src = `https://maps.google.com/maps/api/js?key=[API KEY]&libraries=places`;
+      s.src = `https://maps.google.com/maps/api/js?key=[]&libraries=places`;
       var x = document.getElementsByTagName('script')[0];
       x.parentNode.insertBefore(s, x);
       // Below is important. 
