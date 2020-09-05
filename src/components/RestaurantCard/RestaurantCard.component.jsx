@@ -4,6 +4,10 @@ import { Rate } from "antd";
 
 import "./RestaurantCard.styles.scss";
 
+const streetViewStyles = {
+    width: '50px',
+    height: '50px'
+}
 class RestaurantCard extends React.Component {
     constructor(props){
         super(props);
@@ -21,6 +25,28 @@ class RestaurantCard extends React.Component {
             
         }
     }
+
+    closeCard=()=>{
+        this.setState({
+            showMore: false
+        })
+    }
+    
+    handleStreetview=()=>{
+        let panorama = new window.google.maps.StreetViewPanorama(
+            document.getElementById('streetview'), {
+              position: {
+                  lat: this.props.lat,
+                  lng:this.props.lng
+              },
+              pov: {
+                heading: 34,
+                pitch: 10
+              }
+            });
+    }
+
+    
 
     handleClick=()=> {
         if(this.state.showMore === false){
@@ -47,6 +73,22 @@ class RestaurantCard extends React.Component {
                     }
                 }
                 service.getDetails(request, getRestDetails);
+            }else if(this.props.isGoogle === false){
+                this.setState({
+                    showMore: true,
+                })
+                console.log(this.props.isGoogle)
+                console.log(this.props.reviews)
+                return(
+                    this.props.reviews.map((review, j) => ( 
+                        <div className="review-text"key={j}>
+                            <h2>{review.author_name}</h2>
+                            <span><Rate disabled value={review.rating} /></span>
+                            <p>{review.text}</p>
+                            <div className="border-bottom"></div>
+                        </div>
+                    )) 
+                )
             }
             
         }else{
@@ -65,7 +107,7 @@ class RestaurantCard extends React.Component {
                     <h3>{this.props.restaurantName}</h3>
                 </div>
                 <div className="section-ratings">
-                    <p>({this.props.totalRatings})</p>
+                    <p>({this.props.totalRatings || this.props.rating})</p>
                     <span><Rate allowHalf disabled value={this.props.rating} /></span>
                 </div>
                 <div className="section-details">
@@ -73,6 +115,7 @@ class RestaurantCard extends React.Component {
                     <p>{this.props.address}</p>
                     <p>{this.props.openNow}</p>
                 </div>
+                <button className="street-view" onClick={()=> this.handleStreetview()}>Street View</button>
                 {(() => {
                     if (noReviewAvailable && noOpeningHours) {
                         return (
@@ -107,7 +150,7 @@ class RestaurantCard extends React.Component {
                 })()}
                 
                 <div className="right-arrow">
-                    <button className="right" onClick={()=>this.handleClick()}><i className="fas fa-angle-down"></i></button>
+                    <button className="right" onClick={()=>this.handleClick()}>{this.state.showMore ? true : false}<i className="fas fa-angle-down"></i></button>
                 </div>
             </div>
         )
