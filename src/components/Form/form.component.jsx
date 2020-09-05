@@ -7,19 +7,35 @@ class RestaurantForm extends React.Component{
       super(props);
       this.state = {
         RestaurantName:'',
-        address: '',
-        lat:'',
-        long:'',
+        rating:3
       };
+    }
+
+    handleNameChange=(event)=> {
+      this.setState({
+        RestaurantName: event.target.value
+      });
+    }
+
+    handleRatingChange=(event)=> {
+      let rating = parseInt(event.target.value);
+      this.setState({
+        rating: rating
+      });
+    }
+
+    handleSubmit=(event)=> {
+      event.preventDefault();
+      this.props.onRestSubmit(this.state.RestaurantName, this.state.rating)
+      console.log(this.state.rating)
+      console.log(this.state.RestaurantName)
     }
 
     render() {
         return (
-            <form className="form-container">
-                <input type="text" placeholder="Restaurant Name"/>
-                <input type="text" placeholder="Address"/>
-                <input type="text" placeholder="Latitude"/>
-                <input type="text" placeholder="Longitude"/>
+            <form className="form-container" onSubmit={this.handleSubmit}>
+                <input type="text" placeholder="Restaurant Name" required onChange={this.handleNameChange}/>
+                <input type="number" min="1" max="5" placeholder="Rating" required onChange={this.handleRatingChange}/>
                 <button>SUBMIT</button>
             </form>
         );
