@@ -1,13 +1,9 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Rate } from "antd";
-
+import AddReview from "../Form/addReview.component";
 import "./RestaurantCard.styles.scss";
 
-const streetViewStyles = {
-    width: '50px',
-    height: '50px'
-}
 class RestaurantCard extends React.Component {
     constructor(props){
         super(props);
@@ -22,6 +18,9 @@ class RestaurantCard extends React.Component {
                     weekday_text:["NOT AVAILABLE"]
                 }
             },
+            showForm:false,
+            newReview:[],
+            addReview: false,
             
         }
     }
@@ -31,22 +30,6 @@ class RestaurantCard extends React.Component {
             showMore: false
         })
     }
-    
-    handleStreetview=()=>{
-        let panorama = new window.google.maps.StreetViewPanorama(
-            document.getElementById('streetview'), {
-              position: {
-                  lat: this.props.lat,
-                  lng:this.props.lng
-              },
-              pov: {
-                heading: 34,
-                pitch: 10
-              }
-            });
-    }
-
-    
 
     handleClick=()=> {
         if(this.state.showMore === false){
@@ -98,9 +81,34 @@ class RestaurantCard extends React.Component {
         }
     }
     
+    handleAddReview=()=>{
+        this.setState({
+            showForm: true
+          })
+    }
+
+    handleClose=()=>{
+        this.setState({showForm:false})
+    }
+
+    addReviewFromFormData=(reviewerName, rating, review)=>{
+        let newFormReview = this.state.newReview;
+        newFormReview.push({
+            reviewerName: reviewerName,
+            rating: rating,
+            review: review
+        })
+        this.setState({
+            addReview: true
+        })
+        this.handleClose()
+        console.log(this.state.newReview)
+    }
+
     render(){
         const noReviewAvailable = !this.state.restaurant.reviews;
         const noOpeningHours = !this.state.restaurant.opening_hours;
+        const reviewAdded = !this.state.newReview;
         return (
             <div className="section">
                 <div className="section-header">
@@ -114,8 +122,26 @@ class RestaurantCard extends React.Component {
                     <img alt="restaurant" src={this.props.photo} />
                     <p>{this.props.address}</p>
                     <p>{this.props.openNow}</p>
+                    {(() => {
+                        if(reviewAdded) {
+                            return(
+                                <div className="section-details">
+                                    {this.state.newReview.map((review, i) => (
+                                        <div className="review-text" key={i}>
+                                            <h2>{review.reviewerName}</h2>
+                                            <span><Rate disabled value={review.rating} /></span>
+                                            <p>{review.review}</p>
+                                            <div className="border-bottom"></div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )
+                        }
+                    })}
                 </div>
-                <button className="street-view" onClick={()=> this.handleStreetview()}>Street View</button>
+                <div className="custom-buttons">
+                    <button className="add-review" onClick={()=> this.handleAddReview()}>Add Review</button>{this.state.showForm && <div><AddReview onReviewSubmit={this.addReviewFromFormData}/></div>}
+                </div>
                 {(() => {
                     if (noReviewAvailable && noOpeningHours) {
                         return (
@@ -138,6 +164,7 @@ class RestaurantCard extends React.Component {
                             <div className="section-details-review">
                                 {this.state.restaurant.reviews.map((review, j) => ( 
                                     <div className="review-text"key={j}>
+                                        <img alt="author" src={review.profile_photo_url} />
                                         <h2>{review.author_name}</h2>
                                         <span><Rate disabled value={review.rating} /></span>
                                         <p>{review.text}</p>

@@ -48,12 +48,22 @@
         
 
         .review-text{
-            line-height: 1.5;
+            line-height: 2.5;
             margin: 10px 0;
             
             h2{
                 font-size: 15px;
                 color: #D2D6EF;
+            }
+
+            img{
+                height: 32px;
+                width: 32px;
+                background-size: cover;
+                background-position: center;
+                border-radius: 50%;
+                object-position:50% 50%;
+            margin-top: 10px;
             }
             
         }
@@ -108,8 +118,13 @@
         }
     }
 
-    .street-view{
-        display: block;
+    .custom-buttons{
+        display: flex;
+        flex-direction: row;
+        
+
+        .add-review{
+            display: block;
             position: relative;
             cursor: pointer;
             border-radius: 10px;
@@ -118,8 +133,8 @@
             border: none;
             width: 100px;
             height: 40px;
-            margin-left: 70px;
             margin-top: 10px;
+            margin-left: 75px;
             box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52),inset 2px 2px 2px rgba(83, 92, 136, 0.08);
             font-size: 14px;
             color: #D2D6EF;
@@ -133,7 +148,10 @@
                 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
                 0 100px 80px rgba(0, 0, 0, 0.12); 
             }
+        }
+        
     }
+    
 }
 
 .section:hover {
