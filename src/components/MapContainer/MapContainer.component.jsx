@@ -60,7 +60,7 @@ export class MapContainer extends React.Component {
     let request = {
       location: location,
       type: ["restaurant"],
-      radius: 500
+      radius: 200
     };
     // google service request
     let service = new window.google.maps.places.PlacesService(this.state.map);
