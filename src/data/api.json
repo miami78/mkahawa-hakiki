@@ -2,8 +2,10 @@
     {
        "restaurantName":"Mama Ashanti",
        "address":"Muthangari Gardens, Nairobi",
-       "lat":-1.2830004,
-       "long":36.7699554,
+       "location":{
+         "lat":-1.2830004,
+         "lng":36.7699554
+       },
        "rating":5,
        "reviews":[
           {
@@ -22,8 +24,10 @@
     {
        "restaurantName":"Burger King",
        "address":"Jacaranda Ave, Nairobi",
-       "lat":-1.2855332,
-       "long":36.7691845,
+       "location":{
+         "lat":-1.2855332,
+         "lng":36.7691845
+       },
        "rating":4,
        "reviews":[
           {
@@ -43,8 +47,10 @@
     {
       "restaurantName":"Cheka Japanese Izakaya",
       "address":"Mageta Rd, Nairobi",
-      "lat":-1.2868786,
-      "long":36.7692029,
+      "location":{
+         "lat":-1.2868786,
+         "lng":36.7692029
+      },
       "rating":4,
       "reviews":[
          {
@@ -64,8 +70,10 @@
    {
       "restaurantName":"La Salumeria Restaurant",
       "address":"Korosho Rd, Nairobi",
-      "lat":-1.2889698,
-      "long":36.7700101,
+      "location":{
+         "lat":-1.2889698,
+         "lng":36.7700101
+      },
       "rating":3,
       "reviews":[
          {
@@ -85,8 +93,10 @@
    {
       "restaurantName":"Pizza Inn-Valley Arcade",
       "address":"Gitanga Rd, Nairobi",
-      "lat":-1.2899279,
-      "long":36.77266,
+      "location":{
+         "lat":-1.2899279,
+         "lng":36.77266
+      },
       "rating":2,
       "reviews":[
          {
@@ -107,8 +117,10 @@
    {
       "restaurantName":"Sushi Soo Japanese Restaurant",
       "address":"Oloitoktok Rd, Nairobi",
-      "lat":-1.2902054,
-      "long":36.7748425,
+      "location":{
+         "lat":-1.2902054,
+         "lng":36.7748425
+      },
       "rating":4.5,
       "reviews":[
          {
