@@ -26,12 +26,6 @@ export class MapContainer extends React.Component {
       lat:"",
       lng:"",
       showForm: false,
-      mapBounds:{
-        east: 36.87211077497662,
-        north: -1.2455600060195045,
-        south: -1.2159552503047664,
-        west: 36.91581576259662
-      }
     };
   }
 

@@ -70,8 +70,8 @@ class RestaurantList extends React.Component {
            address={restaurant.address}
            photo={restaurant.photo}
            reviews={restaurant.reviews}
-           lat={restaurant.lat}
-           lng={restaurant.lng}
+           lat={restaurant.location.lat}
+           lng={restaurant.location.lng}
           />
         ))}
       </div>
