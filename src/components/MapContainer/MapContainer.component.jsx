@@ -3,6 +3,7 @@ import Map from '../../utils/getMap';
 import RestaurantForm from '../Form/form.component';
 import userIcon from '../../assets/user-icon.png';
 import placeHolder from '../../assets/placeholder.png';
+import Restaurants from '../../data/api.json';
 
 //map through rest and render marker
 export class MapContainer extends React.Component {
@@ -20,6 +21,7 @@ export class MapContainer extends React.Component {
       map: null,
       restaurants: [],
       newRestaurants: [],
+      storedApiMarkers: [],
       isMapClicked: false,
       lat:"",
       lng:"",
@@ -63,9 +65,8 @@ export class MapContainer extends React.Component {
     //Make request based on current map bounds
     let request = {
       location: location,
-      //bounds: this.state.mapBounds,
       type: ["restaurant"],
-      radius: 200
+      radius: 500
     };
     // google service request
     let service = new window.google.maps.places.PlacesService(this.state.map);
@@ -75,19 +76,36 @@ export class MapContainer extends React.Component {
   // Set places results
   restaurantsDetails = (results, status) => {
     let restaurantArray;
+    //store an array of markers
+    let storedMarkers = [];
+    //get json restaurants
+    Restaurants.forEach((restaurant)=>{
+      const jsonMarker = new window.google.maps.Marker({
+        position: restaurant.location,
+        map: this.state.map,
+        title: restaurant.restaurantName
+      });
+      storedMarkers.push(jsonMarker);
+    })
+    console.log(storedMarkers)
+
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       results.forEach((results) => {
-        //store an array of markers
         //copy same as restaurant array
         const marker = new window.google.maps.Marker({
           position: results.geometry.location,
           map: this.state.map,
-          title: results.title
+          title: results.name
         });
         //get json ,filter and for each add marker
         //only use json data for markers
+        storedMarkers.push(marker)
+        // console.log(this.state.storedApimarkers)
       });
-
+      console.log(storedMarkers)
+      
+      this.setState({ storedApiMarkers: storedMarkers });
+      
       restaurantArray = results.map((restaurant) => {
         //get rating else return 0
         let avgRating, totalRatings;
@@ -162,6 +180,11 @@ export class MapContainer extends React.Component {
     })
     this.setState({ newRestaurants: newRestaurantArray})
     this.props.onNewRestData(newRestaurantArray)
+    this.handleClose()
+  }
+
+  handleClose=()=>{
+    this.setState({showForm:false})
   }
 
   render() {
@@ -186,8 +209,11 @@ export class MapContainer extends React.Component {
           //this.fetchPlaces(this.state.userPosition);
         }}
         updateBounds={(map)=>{
-          
-          //remove old markers,have access
+          //remove old markers
+          while(this.state.storedApiMarkers.length){
+            this.state.storedApiMarkers.pop().setMap(null)
+          }
+          this.setState({storedApiMarkers: []})
           this.fetchPlaces(map.getCenter())
         }}
         onClick={(e)=>{
