@@ -56,22 +56,13 @@ class RestaurantCard extends React.Component {
                     }
                 }
                 service.getDetails(request, getRestDetails);
-            }else if(this.props.isGoogle === false){
+            }else{
                 this.setState({
-                    showMore: true,
+                    isGoogle:false,
+                    showMore: true
                 })
                 console.log(this.props.isGoogle)
                 console.log(this.props.reviews)
-                return(
-                    this.props.reviews.map((review, j) => ( 
-                        <div className="review-text"key={j}>
-                            <h2>{review.author_name}</h2>
-                            <span><Rate disabled value={review.rating} /></span>
-                            <p>{review.text}</p>
-                            <div className="border-bottom"></div>
-                        </div>
-                    )) 
-                )
             }
             
         }else{
@@ -159,7 +150,22 @@ class RestaurantCard extends React.Component {
                                 
                             </div> 
                         )   
-                    }else{
+                    }else if (this.state.isGoogle === false &&this.state.showMore === true ){
+                        return(
+                            <div className="section-details-review">
+                            {    this.props.reviews.map((review, j) => ( 
+                                    <div className="review-text"key={j}>
+                                        <h2>{review.author_name}</h2>
+                                        <span><Rate disabled value={review.rating} /></span>
+                                        <p>{review.text}</p>
+                                        <div className="border-bottom"></div>
+                                    </div>
+                                ))} 
+                            </div>
+                        )
+
+                    }
+                    else{
                         return (
                             <div className="section-details-review">
                                 {this.state.restaurant.reviews.map((review, j) => ( 
