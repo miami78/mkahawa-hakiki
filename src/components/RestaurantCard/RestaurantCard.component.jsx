@@ -134,7 +134,7 @@ class RestaurantCard extends React.Component {
                             </div> 
                         )   
                     }
-                    else if (this.state.isGoogle === false &&this.state.showMore === true ){
+                    else if (this.state.isGoogle === false && this.state.showMore === true ){
                         return(
                             <div className="section-details-review">
                             {    this.props.reviews.map((review, j) => ( 
@@ -150,7 +150,7 @@ class RestaurantCard extends React.Component {
                             </div>
                         )
 
-                    }else if (this.state.isGoogle === false && this.state.addReview === true){
+                    }else if (this.state.isGoogle === false && this.state.addReview === true && this.state.showMore === false){
                         return(
                             <div className="section-details-review"> 
                             {
