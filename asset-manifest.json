@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/mkahawa-hakiki/static/css/main.ab8a73c4.chunk.css",
-    "main.js": "/mkahawa-hakiki/static/js/main.0b0ab9b5.chunk.js",
-    "main.js.map": "/mkahawa-hakiki/static/js/main.0b0ab9b5.chunk.js.map",
+    "main.css": "/mkahawa-hakiki/static/css/main.d09a788a.chunk.css",
+    "main.js": "/mkahawa-hakiki/static/js/main.64120626.chunk.js",
+    "main.js.map": "/mkahawa-hakiki/static/js/main.64120626.chunk.js.map",
     "runtime-main.js": "/mkahawa-hakiki/static/js/runtime-main.4b044557.js",
     "runtime-main.js.map": "/mkahawa-hakiki/static/js/runtime-main.4b044557.js.map",
     "static/css/2.3cb76441.chunk.css": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css",
-    "static/js/2.cda6ab87.chunk.js": "/mkahawa-hakiki/static/js/2.cda6ab87.chunk.js",
-    "static/js/2.cda6ab87.chunk.js.map": "/mkahawa-hakiki/static/js/2.cda6ab87.chunk.js.map",
+    "static/js/2.4660fead.chunk.js": "/mkahawa-hakiki/static/js/2.4660fead.chunk.js",
+    "static/js/2.4660fead.chunk.js.map": "/mkahawa-hakiki/static/js/2.4660fead.chunk.js.map",
     "index.html": "/mkahawa-hakiki/index.html",
-    "precache-manifest.4e40754b445e1b76f67d6fa6d401380b.js": "/mkahawa-hakiki/precache-manifest.4e40754b445e1b76f67d6fa6d401380b.js",
+    "precache-manifest.7537b52512936e8c0aa665e3cb0864ae.js": "/mkahawa-hakiki/precache-manifest.7537b52512936e8c0aa665e3cb0864ae.js",
     "service-worker.js": "/mkahawa-hakiki/service-worker.js",
     "static/css/2.3cb76441.chunk.css.map": "/mkahawa-hakiki/static/css/2.3cb76441.chunk.css.map",
-    "static/css/main.ab8a73c4.chunk.css.map": "/mkahawa-hakiki/static/css/main.ab8a73c4.chunk.css.map",
-    "static/js/2.cda6ab87.chunk.js.LICENSE.txt": "/mkahawa-hakiki/static/js/2.cda6ab87.chunk.js.LICENSE.txt",
+    "static/css/main.d09a788a.chunk.css.map": "/mkahawa-hakiki/static/css/main.d09a788a.chunk.css.map",
+    "static/js/2.4660fead.chunk.js.LICENSE.txt": "/mkahawa-hakiki/static/js/2.4660fead.chunk.js.LICENSE.txt",
     "static/media/placeholder.png": "/mkahawa-hakiki/static/media/placeholder.78013d80.png"
   },
   "entrypoints": [
     "static/js/runtime-main.4b044557.js",
     "static/css/2.3cb76441.chunk.css",
-    "static/js/2.cda6ab87.chunk.js",
-    "static/css/main.ab8a73c4.chunk.css",
-    "static/js/main.0b0ab9b5.chunk.js"
+    "static/js/2.4660fead.chunk.js",
+    "static/css/main.d09a788a.chunk.css",
+    "static/js/main.64120626.chunk.js"
   ]
 }
