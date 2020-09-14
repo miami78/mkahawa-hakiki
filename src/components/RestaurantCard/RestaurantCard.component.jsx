@@ -32,43 +32,38 @@ class RestaurantCard extends React.Component {
     }
 
     handleClick=()=> {
-        if(this.state.showMore === false){
-            //set showMore to true
+        if(this.state.showMore === false && this.props.isGoogle === true){
             this.setState({
                 showMore: true,
-              })
-            if(this.props.isGoogle === true){
-                let request ={
-                    placeId: this.props.id,
-                    fields: ['name','rating','business_status','opening_hours','reviews']
-                }
-                let service = new window.google.maps.places.PlacesService(this.props.mapObject);
-                const getRestDetails=(place, status)=> {
-                    if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-                        console.log("places service OK")
-                        console.log(place)
-                        this.setState({ restaurant: place });
-                        return {
-                            name: place.name,
-                            rating: place.rating,
-                            reviews: place.review,
-                        }
+            })
+            let request ={
+                placeId: this.props.id,
+                fields: ['name','rating','business_status','opening_hours','reviews']
+            }
+            let service = new window.google.maps.places.PlacesService(this.props.mapObject);
+            const getRestDetails=(place, status)=> {
+                if (status === window.google.maps.places.PlacesServiceStatus.OK) {
+                    console.log("places service OK")
+                    console.log(place)
+                    this.setState({ restaurant: place });
+                    return {
+                        name: place.name,
+                        rating: place.rating,
+                        reviews: place.review,
                     }
                 }
-                service.getDetails(request, getRestDetails);
-            }else{
-                this.setState({
-                    isGoogle:false,
-                    showMore: true
-                })
-                console.log(this.props.isGoogle)
-                console.log(this.props.reviews)
             }
+            service.getDetails(request, getRestDetails);
             
-        }else{
+        }else if(this.state.showMore === false && this.props.isGoogle === false){
+            this.setState({
+                showMore: true,
+            })
+        }
+        else {
             this.setState({
                 showMore: false,
-              })
+            })
         }
     }
     
@@ -113,9 +108,8 @@ class RestaurantCard extends React.Component {
                     <p>{this.props.address}</p>
                     <p>{this.props.openNow}</p>
                 </div>
-                <div className="custom-buttons">
-                    <button className="add-review" onClick={()=> this.handleAddReview()}>Add Review</button>{this.state.showForm && <div><AddReview onReviewSubmit={this.addReviewFromFormData}/></div>}
-                </div>
+                <button className="add-review" onClick={()=> this.handleAddReview()}>Add Review</button>{this.state.showForm && <div><AddReview onReviewSubmit={this.addReviewFromFormData}/></div>}
+                
                 {(() => {
                     if (noReviewAvailable && noOpeningHours) {
                         return (
@@ -134,23 +128,10 @@ class RestaurantCard extends React.Component {
                             </div> 
                         )   
                     }
-                    else if (this.state.isGoogle === false && this.state.showMore === true ){
-                        return(
-                            <div className="section-details-review">
-                            {    this.props.reviews.map((review, j) => ( 
-                                    <div className="review-text"key={j}>
-                                        <h2>{review.author_name}</h2>
-                                        <span><Rate disabled value={review.rating} /></span>
-                                        <p>{review.text}</p>
-                                        <div className="border-bottom"></div>
-                                    </div>
-                                ))  
-                                  
-                            } 
-                            </div>
-                        )
-
-                    }else if (this.state.isGoogle === false && this.state.addReview === true && this.state.showMore === false){
+                })()}
+                {(() => {
+                    //new reviews
+                    if (this.state.showMore === true && this.state.addReview === true){
                         return(
                             <div className="section-details-review"> 
                             {
@@ -166,7 +147,29 @@ class RestaurantCard extends React.Component {
                             </div>
                         )
                     }
-                    else{
+                })()}
+                {(() => {
+                    //json results reviews
+                    if (this.state.showMore === true && this.props.isGoogle === false ){
+                        return(
+                            <div className="section-details-review">
+                            {    this.props.reviews.map((review, j) => ( 
+                                    <div className="review-text"key={j}>
+                                        <h2>{review.author_name}</h2>
+                                        <span><Rate disabled value={review.rating} /></span>
+                                        <p>{review.text}</p>
+                                        <div className="border-bottom"></div>
+                                    </div>
+                                ))  
+                                  
+                            } 
+                            </div>
+                        )
+
+                    }
+                })()}
+                {(() => {
+                    if(this.state.showMore === true && this.props.isGoogle === true){
                         return (
                             <div className="section-details-review">
                                 {this.state.restaurant.reviews.map((review, j) => ( 
@@ -183,9 +186,8 @@ class RestaurantCard extends React.Component {
                     }
                 })()}
                 
-                <div className="right-arrow">
-                    <button className="right" onClick={()=>this.handleClick()}>{this.state.showMore ? true : false}<i className="fas fa-angle-down"></i></button>
-                </div>
+                <button className="show-more" onClick={()=>this.handleClick()}>{this.state.showMore ? true : false}<i className="fas fa-angle-down"></i></button>
+                
             </div>
         )
     }

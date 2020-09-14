@@ -37,7 +37,6 @@ class App extends React.Component {
         onNewRestData={this.fetchNewRestaurantData}
         />
         <SideBar 
-        id= "streetview"
         mapObject={this.state.map}
         gRestaurantData={this.state.restaurants} 
         newRestaurants={this.state.newRestaurantDAta}
