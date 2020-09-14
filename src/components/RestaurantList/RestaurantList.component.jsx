@@ -1,6 +1,7 @@
 import React from "react";
 import RestaurantCard from "../RestaurantCard/RestaurantCard.component";
 import Restaurant from "../../data/api.json";
+import placeHolder from '../../assets/placeholder.png';
 
 import "./RestaurantList.styles.scss";
 
@@ -41,7 +42,7 @@ class RestaurantList extends React.Component {
           rating={restaurant.rating}
           restaurantName={restaurant.restaurantName}
           address={""}
-          photo={""}
+          photo={placeHolder}
           reviews={[]}
           />
         ))}
