@@ -88,69 +88,67 @@
         border-bottom: 1.5px solid #e6e6e6;
     }
 
-    .right-arrow{
+    
         
-        .right{
-            display: block;
-            position: relative;
-            cursor: pointer;
-            position: relative;
-            border-radius: 10px;
-            background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
-            outline: none;
-            border: none;
-            width: 40px;
-            height: 30px;
-            border: none;
-            outline: none;
-            margin-left: 100px;
+    .show-more{
+        display: block;
+        position: relative;
+        cursor: pointer;
+        position: relative;
+        border-radius: 10px;
+        background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
+        outline: none;
+        border: none;
+        width: 40px;
+        height: 30px;
+        border: none;
+        outline: none;
+        margin-left: 103px;
+        box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52), inset 2px 2px 2px rgba(83, 92, 136, 0.08);
+        font-size: 18px;
+        color: #D2D6EF;
+
+        &:hover {
             box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52), inset 2px 2px 2px rgba(83, 92, 136, 0.08);
-            font-size: 18px;
-            color: #D2D6EF;
-
-            &:hover {
-                box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52), inset 2px 2px 2px rgba(83, 92, 136, 0.08);
-            }
-
-            .fas, fas{
-                color: #D2D6EF;
-            }
         }
+
+        .fas, fas{
+            color: #D2D6EF;
+        }
+    
     }
 
-    .custom-buttons{
-        display: flex;
-        flex-direction: row;
+    
         
 
-        .add-review{
-            display: block;
-            position: relative;
-            cursor: pointer;
-            border-radius: 10px;
-            background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
-            outline: none;
-            border: none;
-            width: 100px;
-            height: 40px;
-            margin-top: 10px;
-            margin-left: 75px;
-            box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52),inset 2px 2px 2px rgba(83, 92, 136, 0.08);
-            font-size: 14px;
-            color: #D2D6EF;
+    .add-review{
+        display: block;
+        position: relative;
+        cursor: pointer;
+        border-radius: 10px;
+        background: radial-gradient(127.99% 191.14% at 17.5% 0%, #444A6D 0%, #2D324D 100%);
+        outline: none;
+        border: none;
+        width: 100px;
+        height: 40px;
+        margin-left: 75px;
+        margin-bottom: 10px;
+        box-shadow: -2px -2px 6px rgba(34, 38, 61, 0.2), 2px 2px 6px rgba(42, 47, 74, 0.52),inset 2px 2px 2px rgba(83, 92, 136, 0.08);
+        font-size: 14px;
+        color: #D2D6EF;
 
-            &:hover {
-                box-shadow:   
-                0 2.8px 2.2px rgba(0, 0, 0, 0.034),
-                0 6.7px 5.3px rgba(0, 0, 0, 0.048),
-                0 12.5px 10px rgba(0, 0, 0, 0.06),
-                0 22.3px 17.9px rgba(0, 0, 0, 0.072),
-                0 41.8px 33.4px rgba(0, 0, 0, 0.086),
-                0 100px 80px rgba(0, 0, 0, 0.12); 
-            }
+        &:hover {
+            box-shadow:   
+            0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+            0 6.7px 5.3px rgba(0, 0, 0, 0.048),
+            0 12.5px 10px rgba(0, 0, 0, 0.06),
+            0 22.3px 17.9px rgba(0, 0, 0, 0.072),
+            0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+            0 100px 80px rgba(0, 0, 0, 0.12); 
         }
-        
     }
+        
+    
     
 }
 
