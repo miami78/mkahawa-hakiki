@@ -3,6 +3,7 @@ import Map from '../../utils/getMap';
 import RestaurantForm from '../Form/form.component';
 import userIcon from '../../assets/user-icon.png';
 import placeHolder from '../../assets/placeholder.png';
+//import restaurantIcon from '../../assets/restaurant-icon.png';
 import Restaurants from '../../data/api.json';
 
 //map through rest and render marker
@@ -81,7 +82,6 @@ export class MapContainer extends React.Component {
       });
       storedMarkers.push(jsonMarker);
     })
-    console.log(storedMarkers)
 
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       results.forEach((results) => {
@@ -96,7 +96,6 @@ export class MapContainer extends React.Component {
         storedMarkers.push(marker)
         // console.log(this.state.storedApimarkers)
       });
-      console.log(storedMarkers)
       
       this.setState({ storedApiMarkers: storedMarkers });
       
@@ -164,7 +163,7 @@ export class MapContainer extends React.Component {
     let newRestaurant = new window.google.maps.Marker({
       position: this.state.restPos,
       map: this.state.map,
-      title: "restaurant location",
+      title: RestaurantName,
       icon: userIcon
     });
     let newRestaurantArray = this.state.newRestaurants;
@@ -196,6 +195,7 @@ export class MapContainer extends React.Component {
             position: this.state.userPosition,
             map: map,
             title: "user location",
+            animation: window.google.maps.Animation.BOUNCE,
             icon: userIcon,
           });
           this.setState({ map: map });
