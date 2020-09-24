@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import { Rate } from "antd";
-import AddReview from "../Form/addReview.component";
+import AddReview from "../Form/addReviewForm.component";
 import "./RestaurantCard.styles.scss";
 
 class RestaurantCard extends React.Component {

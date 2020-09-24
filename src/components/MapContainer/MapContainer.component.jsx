@@ -1,9 +1,8 @@
 import React from 'react';
 import Map from '../../utils/getMap';
-import RestaurantForm from '../Form/form.component';
+import RestaurantForm from '../Form/newRestForm.component';
 import userIcon from '../../assets/user-icon.png';
 import placeHolder from '../../assets/placeholder.png';
-//import restaurantIcon from '../../assets/restaurant-icon.png';
 import Restaurants from '../../data/api.json';
 
 //map through rest and render marker

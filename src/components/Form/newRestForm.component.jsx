@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './form.styles.scss';
+import './new-rest-form.styles.scss';
 
 class RestaurantForm extends React.Component{
     constructor(props){
@@ -33,7 +33,7 @@ class RestaurantForm extends React.Component{
 
     render() {
         return (
-            <form className="form-container" onSubmit={this.handleSubmit}>
+            <form className="new-rest-form" onSubmit={this.handleSubmit}>
                 <input type="text" placeholder="Restaurant Name" required onChange={this.handleNameChange}/>
                 <input type="number" min="1" max="5" placeholder="Rating" required onChange={this.handleRatingChange}/>
                 <button>SUBMIT</button>
