@@ -1,7 +1,7 @@
 import React from 'react';
 
 const mapStyles = {
-    width: '100%',
+    width: '76%',
     height: '690px',
     position: 'absolute',
     filter: 'brightness(90%)'
@@ -21,7 +21,7 @@ class Map extends React.Component {
       map.addListener('click', e =>{
         this.props.onClick(e, map)
       })
-      map.addListener('bounds_changed', () => {
+      map.addListener('idle', () => {
         this.props.updateBounds(map)
       });
   }
