@@ -27,8 +27,6 @@ class RestaurantForm extends React.Component{
     handleSubmit=(event)=> {
       event.preventDefault();
       this.props.onRestSubmit(this.state.RestaurantName, this.state.rating)
-      console.log(this.state.rating)
-      console.log(this.state.RestaurantName)
     }
 
     render() {

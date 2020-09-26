@@ -24,7 +24,6 @@ class App extends React.Component {
   //pass in new rest array from map container 
   fetchNewRestaurantData=(newRestaurants)=>{
     this.setState({ newRestaurantDAta: newRestaurants });
-    console.log(newRestaurants)
   }
   
   render() {

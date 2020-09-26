@@ -60,7 +60,7 @@ export class MapContainer extends React.Component {
     let request = {
       location: location,
       type: ["restaurant"],
-      radius: 200
+      radius: 500
     };
     // google service request
     let service = new window.google.maps.places.PlacesService(this.state.map);
@@ -84,16 +84,12 @@ export class MapContainer extends React.Component {
 
     if (status === window.google.maps.places.PlacesServiceStatus.OK) {
       results.forEach((results) => {
-        //copy same as restaurant array
         const marker = new window.google.maps.Marker({
           position: results.geometry.location,
           map: this.state.map,
           title: results.name
         });
-        //get json ,filter and for each add marker
-        //only use json data for markers
         storedMarkers.push(marker)
-        // console.log(this.state.storedApimarkers)
       });
       
       this.setState({ storedApiMarkers: storedMarkers });
@@ -199,11 +195,11 @@ export class MapContainer extends React.Component {
           });
           this.setState({ map: map });
           this.props.onMapLoaded(map);
-          //this.fetchPlaces(this.state.userPosition);
         }}
         updateBounds={(map)=>{
           //remove old markers
           while(this.state.storedApiMarkers.length){
+            //setmap null removes markers
             this.state.storedApiMarkers.pop().setMap(null)
           }
           this.setState({storedApiMarkers: []})

@@ -16,7 +16,6 @@ class FilterCard extends React.Component {
   handleChange = rating => {
     this.setState({ minRating: rating });
     this.props.handleFilterChange(rating);
-    console.log(rating);
     //props.parentFunction
   };
 

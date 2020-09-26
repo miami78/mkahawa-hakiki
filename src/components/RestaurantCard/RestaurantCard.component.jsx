@@ -43,8 +43,6 @@ class RestaurantCard extends React.Component {
             let service = new window.google.maps.places.PlacesService(this.props.mapObject);
             const getRestDetails=(place, status)=> {
                 if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-                    console.log("places service OK")
-                    console.log(place)
                     this.setState({ restaurant: place });
                     return {
                         name: place.name,
@@ -88,7 +86,6 @@ class RestaurantCard extends React.Component {
             addReview: true
         })
         this.handleClose()
-        console.log(this.state.newReview)
     }
 
     render(){

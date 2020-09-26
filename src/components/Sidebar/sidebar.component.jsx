@@ -19,7 +19,7 @@ class SideBar extends React.Component {
   
   render() {
     return (
-      <div className="restaurant-card"  id={this.props.id}>
+      <div className="restaurant-card">
         <FilterCard handleFilterChange={this.handleFilterChange} />
         <RestaurantList
           rating={this.state.filteredRating}
