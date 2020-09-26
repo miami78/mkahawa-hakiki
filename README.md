@@ -27,3 +27,8 @@ Video Demo
 6. Start the server
 
    `yarn start` or `npm run start`
+
+## Technologies used
+1. React
+2. Sass
+3. Google-maps-api
